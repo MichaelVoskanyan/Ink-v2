@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Ink.dir\\Debug\\shader.obj",
+            "outputs": [
+                "C:\\Dev\\Ink-v2\\build\\Ink.dir\\Debug\\vc143.pdb",
+                "Ink.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

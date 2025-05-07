@@ -1,0 +1,10 @@
+^C:\DEV\INK-V2\BUILD\CMAKEFILES\694CEC678E642BFDAA6F5634ED69D19C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Dev/Ink-v2 -BC:/Dev/Ink-v2/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Dev/Ink-v2/build/Ink.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

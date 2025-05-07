@@ -1,0 +1,6 @@
+C:/Dev/Ink-v2/build/CMakeFiles/Ink.dir
+C:/Dev/Ink-v2/build/CMakeFiles/ALL_BUILD.dir
+C:/Dev/Ink-v2/build/CMakeFiles/ZERO_CHECK.dir
+C:/Dev/Ink-v2/build/vendor/glfw/CMakeFiles/ALL_BUILD.dir
+C:/Dev/Ink-v2/build/vendor/glfw/src/CMakeFiles/glfw.dir
+C:/Dev/Ink-v2/build/vendor/glfw/src/CMakeFiles/update_mappings.dir
