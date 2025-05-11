@@ -24,6 +24,9 @@ target_sources(Ink PUBLIC
     source/renderer/shader.h
     source/renderer/shader.cc
 
+    source/entities/gameObject.h
+    source/entities/character.h
+    source/entities/platform.h
 
     source/core/application.h
     source/core/application.cc
