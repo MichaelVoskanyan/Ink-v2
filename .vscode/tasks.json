@@ -3,16 +3,31 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "cmake-configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                "${workspaceFolder}",
+                "-B",
+                "${workspaceFolder}/build",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "cmake-build",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "--build",
                 "${workspaceFolder}/build"
             ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
+            "dependsOn": "cmake-configure",
             "group": {
                 "kind": "build",
                 "isDefault": true

@@ -1,22 +1,31 @@
+// application.cpp
 #include "application.h"
 #include <renderer/buffers.h>
 #include <renderer/shader.h>
-
+#include <entities/character.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
 #include <iostream>
 #include <stdexcept>
 
 application_t *application_t::s_instance = nullptr;
 
-void framebufferSizeCallback(GLFWwindow *window, int width, int height) {
-    glViewport(0, 0, width, height);
+void framebufferSizeCallback(GLFWwindow *window, int w, int h) {
+    std::cout << "[application] Resized to " << w << "x" << h << "\n";
+    glViewport(0, 0, w, h);
+}
+
+application_t *application_t::getInstance() {
+    if(!s_instance) {
+        s_instance = new application_t();
+    }
+    return s_instance;
 }
 
 application_t::application_t() {
+    std::cout << "[application] Initializing GLFW...\n";
     if(!glfwInit())
-        throw new std::runtime_error("Failed to initialize GLFW");
+        throw std::runtime_error("Failed to initialize GLFW");
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -24,60 +33,66 @@ application_t::application_t() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+    std::cout << "[application] Creating GLFW window...\n";
     window = glfwCreateWindow(width, height, title, nullptr, nullptr);
-
     if(!window)
-        throw new std::runtime_error("Failed to create GLFW window");
+        throw std::runtime_error("Failed to create GLFW window");
 
     glfwMakeContextCurrent(window);
 
+    std::cout << "[application] Loading GLAD...\n";
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-        throw new std::runtime_error("Failed to initialize GLAD");
+        throw std::runtime_error("Failed to initialize GLAD");
 
+    // **Make sure viewport is set once at startup**
+    std::cout << "[application] Setting initial viewport to " << width << "x" << height << "\n";
+    glViewport(0, 0, width, height);
+
+    // Now we can install the resize callback
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+
     glClearColor(0.589f, 0.443f, 0.09f, 1.f);
+    std::cout << "[application] Clear color set.\n";
+
+    // Finally, create the player (which will trigger shader loading)
+    std::cout << "[application] Creating player character...\n";
+    player = new character_t({0.0f, 0.0f, 0.0f}, 2.5f);
+    std::cout << "[application] Player created.\n";
 }
 
-application_t *application_t::getInstance() {
-    if(nullptr == s_instance) {
-        s_instance = new application_t();
-    }
-    return s_instance;
+application_t::~application_t() {
+    delete player;
+    std::cout << "[application] Terminating GLFW...\n";
+    glfwTerminate();
 }
 
 void application_t::run() {
-    float vertices[] = {-0.5f, -0.5f, 0.0f, 0.f, 0.f, 0.f, 0.f, 0.f, -0.5f, 0.5f,  0.0f, 0.f, 0.f, 0.f, 0.f, 1.f,
-                        0.5f,  0.5f,  0.0f, 0.f, 0.f, 0.f, 1.f, 1.f, 0.5f,  -0.5f, 0.0f, 0.f, 0.f, 0.f, 1.f, 0.f};
+    // target fixed physics step: 1/60th of a second
+    // see https://gafferongames.com/post/fix_your_timestep/
+    const float fixedDt = 1.0f / 60.0f;
+    float accumulator = 0.0f;
 
-    unsigned int indices[] = {0, 1, 2, 0, 2, 3};
-    shader_t s("/source/shaders/tri.vs", "/source/shaders/tri.fs");
-    s.bind();
-
-    vertexArray_t va;
-    vertexBuffer_t *vb = new vertexBuffer_t(vertices, sizeof(vertices));
-    indexBuffer_t *ib = new indexBuffer_t(indices, sizeof(indices) / sizeof(indices[0]));
-
-    va.attachVertexBuffer(vb);
-    va.attachIndexBuffer(ib);
-
-    va.bind();
-
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), nullptr);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), (void *)(3 * sizeof(f32)));
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), (void *)(6 * sizeof(f32)));
-
+    double lastTime = glfwGetTime();
     while(!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // 1. measure real elapsed time
+        double now = glfwGetTime();
+        float frameT = static_cast<float>(now - lastTime);
+        lastTime = now;
 
-        // DRAW STUFF
-        s.bind();
-        va.bind();
-        vb->bind();
-        ib->bind();
-        glDrawElements(GL_TRIANGLES, ib->getCount(), GL_UNSIGNED_INT, nullptr);
+        // 2. accumulate and step physics in fixed increments
+        accumulator += frameT;
+        while(accumulator >= fixedDt) {
+            // process all your physics/logic at a steady 60 Hz
+            player->handleKeyInput();
+            player->handleMouseInput();
+            player->update(fixedDt);
+
+            accumulator -= fixedDt;
+        }
+
+        // 3. render
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        player->draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

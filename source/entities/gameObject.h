@@ -5,7 +5,7 @@
 class gameObject_t {
 public:
     glm::vec3 position;
-    glm::vec3 velocity;
+    glm::vec2 velocity;
     float mass = 0.0f; // 0 = static or not affected by gravity
 
     virtual void update(float dt) = 0;

@@ -12,25 +12,25 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "build"
+            "preLaunchTask": "cmake-build"
         },
         {
             "name": "Debug LLVM (Windows)",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Ink.exe",
+            "program": "${workspaceFolder}/build/Debug/Ink.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "preLaunchTask": "build"
+            "preLaunchTask": "cmake-build"
         },
         {
             "name": "Debug (Linux)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Ink",
+            "program": "${workspaceFolder}/build/Debug/Ink",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -44,7 +44,7 @@
                     "ignoreFailures": false
                 }
             ],
-            "preLaunchTask": "build"
+            "preLaunchTask": "cmake-build"
         }
     ]
 }

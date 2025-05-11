@@ -1,28 +1,39 @@
 #ifndef INK_APPLICATION_H
 #define INK_APPLICATION_H
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include <entities/character.h>
+
 /**
  * Simple application loop with window setup/cleanup.
  */
-
-struct GLFWwindow;
-
 class application_t {
-    int width = 1920, height = 1080;
-    const char *title = "INK";
-    GLFWwindow *window;
-    
-    static application_t *s_instance;
-
-    application_t();
-
 public:
+    // Access the single application instance
+    static application_t *getInstance();
+    // Main loop: update and render
+    void run();
+
+    ~application_t();
+
+    // Delete copy operations
     application_t(const application_t &app) = delete;
     application_t &operator=(const application_t &app) = delete;
 
-    static application_t *getInstance();
+private:
+    application_t();
 
-public:
-    void run();
+    int width = 1920;
+    int height = 1080;
+    const char *title = "INK";
+    GLFWwindow *window = nullptr;
+
+    // Singleton instance
+    static application_t *s_instance;
+
+    // The main player character
+    character_t *player = nullptr;
 };
-#endif
+
+#endif // INK_APPLICATION_H
