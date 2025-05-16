@@ -3,6 +3,7 @@
 #include <renderer/buffers.h>
 #include <renderer/shader.h>
 #include <entities/character.h>
+#include <entities/platform.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -56,8 +57,15 @@ application_t::application_t() {
 
     // Finally, create the player (which will trigger shader loading)
     std::cout << "[application] Creating player character...\n";
-    player = new character_t({0.0f, 0.0f, 0.0f}, 2.5f);
+    player = new character_t({0.0f, 0.0f, 0.0f}, 2.5f, 0.2f, glm::vec2(0.2f, 0.2f));
     std::cout << "[application] Player created.\n";
+
+    // Create a test platform
+    std::cout << "[application] Creating test platform...\n";
+    platform = new platform_t(platformType_e::stationary, {0.0f, -1.0f, 0.0f}, 0.0f,
+                              glm::vec2(5.0f, 0.2f)); // adding a scale to make the platform wider
+    // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes up later
+    std::cout << "[application] Platform created.\n";
 }
 
 application_t::~application_t() {
@@ -85,6 +93,7 @@ void application_t::run() {
             // process all your physics/logic at a steady 60 Hz
             player->handleKeyInput();
             player->handleMouseInput();
+            player->resolveCollision(platform);
             player->update(fixedDt);
 
             accumulator -= fixedDt;
@@ -93,6 +102,7 @@ void application_t::run() {
         // 3. render
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         player->draw();
+        platform->draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

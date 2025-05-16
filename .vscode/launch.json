@@ -4,7 +4,7 @@
     "configurations": [
         {
             "name": "Debug (Windows)",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/Ink.exe",
             "args": [],
@@ -16,7 +16,7 @@
         },
         {
             "name": "Debug LLVM (Windows)",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/Ink.exe",
             "args": [],

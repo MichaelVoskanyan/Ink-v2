@@ -4,6 +4,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
+#include <entities/platform.h>
 
 /**
  * Simple application loop with window setup/cleanup.
@@ -34,6 +35,7 @@ private:
 
     // The main player character
     character_t *player = nullptr;
+    platform_t *platform = nullptr;
 };
 
 #endif // INK_APPLICATION_H
