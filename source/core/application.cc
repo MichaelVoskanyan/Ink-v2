@@ -11,6 +11,7 @@
 #include <stdexcept>
 
 application_t *application_t::s_instance = nullptr;
+renderer_t *renderer_t::s_instance = nullptr;
 
 void framebufferSizeCallback(GLFWwindow *window, int w, int h) {
     std::cout << "[application] Resized to " << w << "x" << h << "\n";
@@ -95,7 +96,7 @@ void application_t::run() {
     const float fixedDt = 1.0f / 60.0f;
     float accumulator = 0.0f;
 
-    std::unique_ptr<renderer_t> renderer = std::make_unique<renderer_t>();
+    auto renderer = renderer_t::getInstance();
 
     double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
@@ -103,7 +104,7 @@ void application_t::run() {
         double now = glfwGetTime();
         float frameT = static_cast<float>(now - lastTime);
         lastTime = now;
-
+        renderer->beginScene(glm::mat4(1.f), glm::mat4(1.f));
         // 2. accumulate and step physics in fixed increments
         accumulator += frameT;
         while (accumulator >= fixedDt) {
@@ -113,8 +114,9 @@ void application_t::run() {
         }
 
         // 3. render
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        entityManager->draw();
+        // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // entityManager->draw();
+        renderer->endScene();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

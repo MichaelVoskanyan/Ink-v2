@@ -22,11 +22,24 @@ struct sceneObject_t {
 };
 
 class renderer_t {
+    static renderer_t *s_instance;
+
+    renderer_t() = default;
+    ~renderer_t() = default;
+
     vector<shared_ptr<sceneObject_t>> m_renderQueue;
     glm::mat4 m_viewMat;
     glm::mat4 m_projMat;
 
 public:
+
+    static renderer_t *getInstance() {
+        if (s_instance == nullptr) {
+            s_instance = new renderer_t();
+        }
+        return s_instance;
+    }
+
     void beginScene(const glm::mat4 &viewMat, const glm::mat4 &projMat) {
         m_viewMat = viewMat;
         m_projMat = projMat;

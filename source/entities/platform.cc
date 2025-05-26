@@ -45,8 +45,8 @@ platform_t::platform_t(platformType_e type, const glm::vec3 &startPos, float mas
     renderObject->m_mesh->m_vertexArray = std::make_shared<vertexArray_t>(
             std::make_shared<vertexBuffer_t>(s_verts, (u32)sizeof(s_verts)),
             std::make_shared<indexBuffer_t>(s_idx, (u32)(sizeof(s_idx) / sizeof(s_idx[0]))));
-    renderObject->m_mesh->m_shader = std::make_shared<shader_t>("../source/shaders/platform.vs",
-                                                                "../source/shaders/platform.fs");
+    renderObject->m_mesh->m_shader = std::make_shared<shader_t>("../../source/shaders/platform.vs",
+                                                                "../../source/shaders/platform.fs");
 
     renderObject->m_transform.m_position = position;
     renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
@@ -59,8 +59,12 @@ platform_t::platform_t(platformType_e type, const glm::vec3 &startPos, float mas
 void platform_t::update(float dt) {
     // Update hitbox position to match platform position
     hitbox.updatePosition(glm::vec3(position));
+    
     renderObject->m_transform.m_position = position;
     renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
+
+    auto rend = renderer_t::getInstance();
+    rend->submit(renderObject);
 }
 
 void platform_t::draw() {
