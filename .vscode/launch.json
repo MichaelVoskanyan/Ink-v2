@@ -4,31 +4,27 @@
     "configurations": [
         {
             "name": "Debug (Windows)",
-            "type": "cppdbg",
+            "type": "cppvsdbg", // ← use the VS debugger on Windows
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/Ink.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
             "preLaunchTask": "cmake-build"
         },
         {
             "name": "Debug LLVM (Windows)",
-            "type": "cppdbg",
+            "type": "cppvsdbg", // ← also VS debugger (works for clang targets)
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/Ink.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
             "preLaunchTask": "cmake-build"
         },
         {
             "name": "Debug (Linux)",
-            "type": "cppdbg",
+            "type": "cppdbg", // keeps your existing Linux setup
             "request": "launch",
             "program": "${workspaceFolder}/build/Debug/Ink",
             "args": [],
