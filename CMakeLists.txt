@@ -26,7 +26,11 @@ target_sources(Ink PUBLIC
 
     source/entities/gameObject.h
     source/entities/character.h
+    source/entities/character.cc
     source/entities/platform.h
+    source/entities/platform.cc
+    source/entities/hitbox.h
+    source/entities/hitbox.cc
 
     source/core/application.h
     source/core/application.cc
