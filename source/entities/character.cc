@@ -40,11 +40,11 @@ character_t::character_t(const glm::vec3 &startPos, float speedValue, float mass
     // One‐time GL resource setup
     if (!s_ready) {
         renderObject = make_shared<sceneObject_t>();
-        renderObject->m_mesh = make_shared<mesh_t>();
-        renderObject->m_mesh->m_vertex_array = make_shared<vertexArray_t>(
+        renderObject->m_Mesh = make_shared<mesh_t>();
+        renderObject->m_Mesh->m_vertexArray = make_shared<vertexArray_t>(
                 make_shared<vertexBuffer_t>(s_verts, sizeof(s_verts)),
                 make_shared<indexBuffer_t>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
-        renderObject->m_mesh->m_shader =
+        renderObject->m_Mesh->m_Shader =
                 make_shared<shader_t>("../source/shaders/char.vs", "../source/shaders/char.fs");
 
         s_ready = true;
@@ -88,7 +88,7 @@ void character_t::resolveCollision(gameObject_t *other) {
             // Move the character out of the other object
             glm::vec2 resolution = hitbox.getCollisionResolution(other->hitbox);
             position += glm::vec3(resolution, 0.0f);
-            renderObject->m_transform.m_position = position;
+            renderObject->m_Transform.m_position = position;
 
             // Kill velocity in the direction of collision
             if (resolution.x != 0.0f) {
@@ -119,6 +119,6 @@ void character_t::update(float dt) {
     // Update hitbox position to match character position
     hitbox.updatePosition(glm::vec3(position));
 
-    renderObject->m_transform.m_position = position;
-    renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
+    renderObject->m_Transform.m_position = position;
+    renderObject->m_Transform.m_scale = glm::vec3(scale, 1.0);
 }

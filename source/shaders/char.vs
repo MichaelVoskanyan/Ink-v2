@@ -7,8 +7,8 @@ layout(location = 2) in vec2 a_uv;
 out vec3 FragPos;
 out vec3 Normal;
 
-uniform mat4 u_view_mat;
-uniform mat4 u_proj_mat;
+uniform mat4 u_viewMat;
+uniform mat4 u_projMat;
 
 uniform vec3 u_position;
 uniform vec3 u_scale;
@@ -43,6 +43,6 @@ void main() {
     // model = T * R * S;
     FragPos = vec3(model * vec4(a_position, 1.0));
     Normal = mat3(transpose(inverse(model))) * a_normal;
-    // gl_Position = uProjectionMatrix * uViewMatrix * model * vec4(aPosition, 1.0);
+    // gl_Position = u_projMat * u_viewMat * model * vec4(aPosition, 1.0);
     gl_Position = model * vec4(a_position, 1.0);
 }
