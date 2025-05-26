@@ -12,31 +12,31 @@
  */
 class application_t {
 public:
-  // Access the single application instance
-  static application_t *getInstance();
-  // Main loop: update and render
-  void run();
+    // Access the single application instance
+    static application_t *getInstance();
+    // Main loop: update and render
+    void run();
 
-  ~application_t();
+    ~application_t();
 
-  // Delete copy operations
-  application_t(const application_t &app) = delete;
-  application_t &operator=(const application_t &app) = delete;
+    // Delete copy operations
+    application_t(const application_t &app) = delete;
+    application_t &operator=(const application_t &app) = delete;
 
 private:
-  application_t();
+    application_t();
 
-  int width = 1920;
-  int height = 1080;
-  const char *title = "INK";
-  GLFWwindow *window = nullptr;
+    int width = 1280;
+    int height = 720;
+    const char *title = "INK";
+    GLFWwindow *window = nullptr;
 
-  // Singleton instance
-  static application_t *s_instance;
+    // Singleton instance
+    static application_t *s_instance;
 
-  // The main player character
-  std::shared_ptr<character_t> player = nullptr;
-  entityManager_t *entityManager = nullptr;
+    // The main player character
+    std::shared_ptr<character_t> player = nullptr;
+    entityManager_t *entityManager = nullptr;
 };
 
-#endif // INK_APPLICATION_H
+#endif  // INK_APPLICATION_H

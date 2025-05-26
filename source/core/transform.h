@@ -6,8 +6,8 @@
 
 struct transform_t {
     glm::vec3 m_position;
-    glm::vec3 m_scale;
-    glm::quat m_rotation;
+    glm::vec3 m_scale = glm::vec3(1.f);
+    glm::quat m_rotation = glm::quat();
 };
 
 #endif
