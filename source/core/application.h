@@ -2,6 +2,7 @@
 #define INK_APPLICATION_H
 
 #define GLFW_INCLUDE_NONE
+#include "./core/entityManager.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
@@ -34,10 +35,8 @@ private:
   static application_t *s_instance;
 
   // The main player character
-  character_t *player = nullptr;
-  platform_t *platform = nullptr;
-  platform_t *platform_2 = nullptr;
-  platform_t *platform_3 = nullptr;
+  std::shared_ptr<character_t> player = nullptr;
+  entityManager_t *entityManager = nullptr;
 };
 
 #endif // INK_APPLICATION_H

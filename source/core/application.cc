@@ -1,5 +1,6 @@
 // application.cpp
 #include "application.h"
+#include "entityManager.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
@@ -56,33 +57,35 @@ application_t::application_t() {
   glClearColor(0.589f, 0.443f, 0.09f, 1.f);
   std::cout << "[application] Clear color set.\n";
 
+  entityManager = entityManager_t::instance();
+
   // Finally, create the player (which will trigger shader loading)
   std::cout << "[application] Creating player character...\n";
-  player = new character_t(glm::vec3(0.0f, 0.0f, 0.0f), 2.5f, 0.2f,
-                           glm::vec2(0.2f, 0.2f));
+  player = entityManager->add<character_t>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f,
+                                           0.2f, glm::vec2(0.2f, 0.2f));
   std::cout << "[application] Player created.\n";
 
   // Create a test platform
-  std::cout << "[application] Creating test platform...\n";
-  platform =
-      new platform_t(platformType_e::stationary, glm::vec3(0.0f, -1.0f, 0.0f),
-                     0.0f, glm::vec2(5.0f, 0.2f),
-                     true); // adding a scale to make the platform wider
-  platform_2 =
-      new platform_t(platformType_e::stationary, glm::vec3(0.8f, 0.0f, 0.0f),
-                     0.0f, glm::vec2(0.2f, 0.5f),
-                     true); // adding a scale to make the platform wider
-  platform_3 =
-      new platform_t(platformType_e::stationary, glm::vec3(0.0f, -0.5f, 0.0f),
-                     0.0f, glm::vec2(0.5f, 0.2f),
-                     true); // adding a scale to make the platform wider
-  // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes up later
-  std::cout << "[application] Platform created.\n";
+  std::cout << "[application] Creating test platforms...\n";
+  entityManager->add<platform_t>(platformType_e::stationary,
+                                 glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
+                                 glm::vec2(5.0f, 0.2f), true);
+  entityManager->add<platform_t>(
+      platformType_e::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
+      glm::vec2(0.2f, 0.5f),
+      true); // adding a scale to make the platform wider
+  entityManager->add<platform_t>(
+      platformType_e::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
+      glm::vec2(0.5f, 0.2f),
+      true); // adding a scale to make the platform wider
+  // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
+  // up later
+  std::cout << "[application] Platforms created.\n";
 }
 
 application_t::~application_t() {
-  delete player;
   std::cout << "[application] Terminating GLFW...\n";
+  glfwDestroyWindow(window);
   glfwTerminate();
 }
 
@@ -103,20 +106,13 @@ void application_t::run() {
     accumulator += frameT;
     while (accumulator >= fixedDt) {
       // process all your physics/logic at a steady 60 Hz
-      player->update(fixedDt);
-      player->resolveCollision(platform);
-      player->resolveCollision(platform_2);
-      player->resolveCollision(platform_3);
-
+      entityManager->update(fixedDt);
       accumulator -= fixedDt;
     }
 
     // 3. render
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    player->draw();
-    platform->draw();
-    platform_2->draw();
-    platform_3->draw();
+    entityManager->draw();
 
     glfwSwapBuffers(window);
     glfwPollEvents();

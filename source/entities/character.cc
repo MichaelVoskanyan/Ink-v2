@@ -27,17 +27,14 @@ static float s_verts[] = {-0.5f, -0.5f, 0.0f, /* skip 5 floats */ 0,
                           0,     1,     1,    0};
 static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
-character_t::character_t(glm::vec3 &startPos, float speedValue, float massValue,
-                         const glm::vec2 scale)
+character_t::character_t(const glm::vec3 &startPos, float speedValue,
+                         float massValue, const glm::vec2 scale)
     : gameObject_t(scale, startPos), speed(speedValue) {
   // Initialize base class members
   this->scale = scale;
   mass = massValue;
   position = startPos;
   velocity = glm::vec2(0.0f);
-
-  // Initialize hitbox to match scaled size
-  hitbox = hitbox_t(scale, position);
 
   // One‐time GL resource setup
   if (!s_ready) {
@@ -103,29 +100,24 @@ void character_t::resolveCollision(gameObject_t *other) {
             << std::endl;
   std::cout << "  Character velocity: (" << velocity.x << ", " << velocity.y
             << ")" << std::endl;
+  std::cout << "[character] Platform has collision and character can move"
+            << std::endl;
+  // Move the character out of the other object
+  glm::vec2 resolution = hitbox.getCollisionResolution(other->hitbox);
+  position += glm::vec3(resolution, 0.0f);
 
-  if (hitbox.intersects(other->hitbox)) {
-    if (other->hasCollision() && this->shouldMoveOnCollision()) {
-      std::cout << "[character] Platform has collision and character can move"
-                << std::endl;
-      // Move the character out of the other object
-      glm::vec2 resolution = hitbox.getCollisionResolution(other->hitbox);
-      position += glm::vec3(resolution, 0.0f);
-
-      // Kill velocity in the direction of collision
-      if (resolution.x != 0.0f) {
-        velocity.x = 0.0f; // Kill horizontal velocity if colliding horizontally
-        std::cout << "[character] Killed horizontal velocity" << std::endl;
-      }
-      if (resolution.y != 0.0f) {
-        velocity.y = 0.0f; // Kill vertical velocity if colliding vertically
-        if (resolution.y > 0.0f) {
-          m_isJumping = false; // Reset jumping state when landing
-        }
-        std::cout << "[character] Killed vertical velocity and reset jump"
-                  << std::endl;
-      }
+  // Kill velocity in the direction of collision
+  if (resolution.x != 0.0f) {
+    velocity.x = 0.0f; // Kill horizontal velocity if colliding horizontally
+    std::cout << "[character] Killed horizontal velocity" << std::endl;
+  }
+  if (resolution.y != 0.0f) {
+    velocity.y = 0.0f; // Kill vertical velocity if colliding vertically
+    if (resolution.y > 0.0f) {
+      m_isJumping = false; // Reset jumping state when landing
     }
+    std::cout << "[character] Killed vertical velocity and reset jump"
+              << std::endl;
   }
 }
 
@@ -140,7 +132,7 @@ void character_t::update(float dt) {
   position += glm::vec3(velocity * speed * dt, 0.0f);
 
   // Update hitbox position to match character position
-  hitbox.updatePosition(glm::vec3(position));
+  hitbox.updatePosition(position);
 }
 
 void character_t::draw() {

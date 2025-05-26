@@ -4,7 +4,7 @@
 class hitbox_t {
 public:
   hitbox_t();
-  hitbox_t(const glm::vec2 &size, glm::vec3 &position);
+  hitbox_t(const glm::vec2 &size, const glm::vec3 &startPos);
 
   // Update the hitbox position based on entity position (ignoring z)
   void updatePosition(const glm::vec3 &entityPos);

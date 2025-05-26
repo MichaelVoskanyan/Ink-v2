@@ -4,8 +4,8 @@
 
 hitbox_t::hitbox_t() {}
 
-hitbox_t::hitbox_t(const glm::vec2 &size, glm::vec3 &position)
-    : size(size), position(position) {
+hitbox_t::hitbox_t(const glm::vec2 &size, const glm::vec3 &startPos)
+    : size(size), position(startPos) {
   std::cout << "[hitbox] Created with size: (" << size.x << ", " << size.y
             << ")" << std::endl;
   std::cout << "[hitbox] Created with position: (" << position.x << ", "
@@ -79,7 +79,7 @@ glm::vec2 hitbox_t::getCollisionResolution(const hitbox_t &other) const {
     resolution = glm::vec2(overlapRight, 0.0f);
   } else if (minOverlap == overlapTop) {
     resolution = glm::vec2(0.0f, overlapTop);
-  } else { // overlapBottom
+  } else {
     resolution = glm::vec2(0.0f, -overlapBottom);
   }
 

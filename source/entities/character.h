@@ -14,11 +14,10 @@ class character_t : public gameObject_t {
 public:
   // speed scalar for planar movement
   float speed = 1.0f;
-  hitbox_t hitbox;
   drawMode_e drawMode = drawMode_e::none;
 
   // Constructor: initialize position and speed, optional mass
-  character_t(glm::vec3 &startPos, float speedValue, float massValue,
+  character_t(const glm::vec3 &startPos, float speedValue, float massValue,
               const glm::vec2 scale);
 
   // Input handling

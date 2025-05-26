@@ -42,9 +42,6 @@ platform_t::platform_t(platformType_e type, glm::vec3 &startPos,
   std::cout << "  Scale: (" << scale.x << ", " << scale.y << ")" << std::endl;
   std::cout << "  Mass: " << mass << std::endl;
 
-  // Initialize hitbox to match scaled size
-  hitbox = hitbox_t(scale, position);
-
   // One‐time GL resource setup
   if (!s_ready) {
     // 1. Compile & bind our minimal shader
@@ -78,7 +75,7 @@ platform_t::platform_t(platformType_e type, glm::vec3 &startPos,
 
 void platform_t::update(float dt) {
   // Update hitbox position to match platform position
-  hitbox.updatePosition(glm::vec3(position));
+  //   hitbox.updatePosition(glm::vec3(position));
 }
 
 void platform_t::draw() {

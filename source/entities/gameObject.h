@@ -6,7 +6,7 @@
 class gameObject_t {
 public:
   gameObject_t(const glm::vec2 &s = glm::vec2(1.0f, 1.0f),
-               glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
+               const glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
       : position(p), velocity(0.0f), scale(s),
         hitbox(s, p) // build hit-box once, with real data
   {}
@@ -22,8 +22,9 @@ public:
 
   // Override these in subclasses as needed
   virtual bool hasCollision() const { return false; }
+  virtual void resolveCollision(gameObject_t *other) {}
   virtual bool shouldMoveOnCollision() const { return false; }
 
   bool affectedByGravity() const { return mass > 0.0f; }
-  virtual ~gameObject_t() = default;
+  ~gameObject_t() = default;
 };
