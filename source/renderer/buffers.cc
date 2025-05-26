@@ -42,29 +42,31 @@ void vertexBuffer_t::unbind() const {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-vertexArray_t::vertexArray_t() : rendererID(0), vertexBuffer(nullptr), indexBuffer(nullptr) {
+vertexArray_t::vertexArray_t(const shared_ptr<vertexBuffer_t> &vb,
+                             const shared_ptr<indexBuffer_t> &ib)
+    : rendererID(0), vertexBuffer(vb), indexBuffer(ib) {
     glGenVertexArrays(1, &rendererID);
     glBindVertexArray(rendererID);
+
+    vertexBuffer->bind();
+    indexBuffer->bind();
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), nullptr);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), (void *) (sizeof(f32) * 3));
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), (void *) (sizeof(f32) * 6));
 }
 
 vertexArray_t::~vertexArray_t() {
     glDeleteVertexArrays(1, &rendererID);
 }
 
-void vertexArray_t::attachVertexBuffer(vertexBuffer_t *vertBuf) {
-    glBindVertexArray(rendererID);
-    vertBuf->bind();
-    vertexBuffer = vertBuf;
-}
-
-void vertexArray_t::attachIndexBuffer(indexBuffer_t *indBuf) {
-    glBindVertexArray(rendererID);
-    indBuf->bind();
-    indexBuffer = indBuf;
-}
-
 void vertexArray_t::bind() const {
     glBindVertexArray(rendererID);
+    vertexBuffer->bind();
+    indexBuffer->bind();
 }
 
 void vertexArray_t::unbind() const {

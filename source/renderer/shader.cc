@@ -13,18 +13,20 @@ shader_t::shader_t(const char *vertexPath, const char *fragmentPath) {
 
     // Build full paths under source/shaders/
     // I think this is fine to hardcode
-    fs::path vertPath = projectDir / "source" / "shaders" / vertexPath;
-    fs::path fragPath = projectDir / "source" / "shaders" / fragmentPath;
+    // fs::path vertPath = vertexPath;
+    // fs::path fragPath = fragmentPath;
 
-    std::cerr << "Loading vertex shader from:   " << vertPath << "\n";
-    std::cerr << "Loading fragment shader from: " << fragPath << "\n";
+    // std::string vertPath = vertexPath, fragPath = fragmentPath;
+
+    std::cerr << "Loading vertex shader from:   " << vertexPath << "\n";
+    std::cerr << "Loading fragment shader from: " << fragmentPath << "\n";
 
     std::string vertexCode, fragmentCode;
     {
-        std::ifstream vFile(vertPath), fFile(fragPath);
-        if(!vFile || !fFile) {
-            throw std::runtime_error("Failed to open shader files:\n  " + vertPath.string() + "\n  " +
-                                     fragPath.string());
+        std::ifstream vFile(vertexPath), fFile(fragmentPath);
+        if (!vFile || !fFile) {
+            throw std::runtime_error("Failed to open shader files:\n  " + std::string(vertexPath) +
+                                     "\n  " + fragmentPath);
         }
         std::stringstream vs, fs;
         vs << vFile.rdbuf();
@@ -39,7 +41,7 @@ shader_t::shader_t(const char *vertexPath, const char *fragmentPath) {
         glCompileShader(id);
         GLint ok;
         glGetShaderiv(id, GL_COMPILE_STATUS, &ok);
-        if(!ok) {
+        if (!ok) {
             char log[1024];
             glGetShaderInfoLog(id, 1024, nullptr, log);
             throw std::runtime_error(std::string("ERROR::") + tag + "::COMPILATION_FAILED\n" + log);
@@ -58,7 +60,7 @@ shader_t::shader_t(const char *vertexPath, const char *fragmentPath) {
     {
         GLint ok;
         glGetProgramiv(rendererID, GL_LINK_STATUS, &ok);
-        if(!ok) {
+        if (!ok) {
             char log[1024];
             glGetProgramInfoLog(rendererID, 1024, nullptr, log);
             throw std::runtime_error(std::string("ERROR::SHADER::PROGRAM::LINKING_FAILED\n") + log);
@@ -74,7 +76,7 @@ void shader_t::bind() {
 }
 
 void shader_t::setBool(const std::string &name, bool value) const {
-    glUniform1i(glGetUniformLocation(rendererID, name.c_str()), (int)value);
+    glUniform1i(glGetUniformLocation(rendererID, name.c_str()), (int) value);
 }
 
 void shader_t::setInt(const std::string &name, int value) const {
@@ -94,5 +96,6 @@ void shader_t::setVec3(const std::string &name, float x, float y, float z) const
 }
 
 void shader_t::setMat4(const std::string &name, glm::mat4 value) const {
-    glUniformMatrix4fv(glGetUniformLocation(rendererID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+    glUniformMatrix4fv(glGetUniformLocation(rendererID, name.c_str()), 1, GL_FALSE,
+                       glm::value_ptr(value));
 }

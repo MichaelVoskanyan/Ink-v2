@@ -36,6 +36,10 @@ public:
         m_render_queue.push_back(object);
     }
 
+    void clearQueue() {
+        m_render_queue.clear();
+    }
+
     void endScene() {
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -43,15 +47,13 @@ public:
             obj->m_mesh->m_vertex_array->bind();
             obj->m_mesh->m_shader->bind();
 
-            obj->m_mesh->m_shader->setMat4("u_view_matrix", m_view_mat);
-            obj->m_mesh->m_shader->setMat4("u_projection_matrix", m_proj_mat);
+            obj->m_mesh->m_shader->setMat4("u_view_mat", m_view_mat);
+            obj->m_mesh->m_shader->setMat4("u_proj_mat", m_proj_mat);
 
-            obj->m_mesh->m_shader->setVec3("u_position",
-                                           obj->m_transform.m_position);
+            obj->m_mesh->m_shader->setVec3("u_position", obj->m_transform.m_position);
             obj->m_mesh->m_shader->setVec3("u_scale", obj->m_transform.m_scale);
 
-            glDrawElements(GL_TRIANGLES,
-                           obj->m_mesh->m_vertex_array->getIndexCount(),
+            glDrawElements(GL_TRIANGLES, obj->m_mesh->m_vertex_array->getIndexCount(),
                            GL_UNSIGNED_INT, nullptr);
         }
     }

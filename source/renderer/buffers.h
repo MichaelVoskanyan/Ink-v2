@@ -1,6 +1,10 @@
 #ifndef INK_BUFFERS_H
 #define INK_BUFFERS_H
 
+#include <memory>
+
+using std::shared_ptr;
+
 typedef unsigned int u32;
 typedef float f32;
 typedef double f64;
@@ -36,15 +40,12 @@ public:
 class vertexArray_t {
 private:
     u32 rendererID;
-    vertexBuffer_t *vertexBuffer;
-    indexBuffer_t *indexBuffer;
+    shared_ptr<vertexBuffer_t> vertexBuffer;
+    shared_ptr<indexBuffer_t> indexBuffer;
 
 public:
-    vertexArray_t();
+    vertexArray_t(const shared_ptr<vertexBuffer_t> &vb, const shared_ptr<indexBuffer_t> &ib);
     ~vertexArray_t();
-
-    void attachVertexBuffer(vertexBuffer_t *vertBuf);
-    void attachIndexBuffer(indexBuffer_t *indBuf);
 
     void bind() const;
     void unbind() const;
