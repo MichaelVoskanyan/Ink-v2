@@ -43,10 +43,10 @@ platform_t::platform_t(platformType_e type, const glm::vec3 &startPos, float mas
     renderObject = std::make_shared<sceneObject_t>();
     renderObject->m_mesh = std::make_shared<mesh_t>();
     renderObject->m_mesh->m_vertexArray = std::make_shared<vertexArray_t>(
-            std::make_shared<vertexBuffer_t>(s_verts, (u32) sizeof(s_verts)),
-            std::make_shared<indexBuffer_t>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
-    renderObject->m_mesh->m_shader = std::make_shared<shader_t>("../source/shaders/platform.vs",
-                                                                "../source/shaders/platform.fs");
+            std::make_shared<vertexBuffer_t>(s_verts, (u32)sizeof(s_verts)),
+            std::make_shared<indexBuffer_t>(s_idx, (u32)(sizeof(s_idx) / sizeof(s_idx[0]))));
+    renderObject->m_mesh->m_shader = std::make_shared<shader_t>("../assets/shaders/platform.vs",
+                                                                "../assets/shaders/platform.fs");
 
     renderObject->m_transform.m_position = position;
     renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
