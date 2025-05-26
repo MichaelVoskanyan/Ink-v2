@@ -37,11 +37,11 @@ character_t::character_t(const glm::vec3 &startPos, float speedValue, float mass
     // One‐time GL resource setup
     if (!s_ready) {
         renderObject = make_shared<sceneObject_t>();
-        renderObject->m_Mesh = make_shared<mesh_t>();
-        renderObject->m_Mesh->m_vertexArray = make_shared<vertexArray_t>(
-                make_shared<vertexBuffer_t>(s_verts, sizeof(s_verts)),
-                make_shared<indexBuffer_t>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
-        renderObject->m_Mesh->m_Shader =
+        renderObject->m_mesh = make_shared<mesh_t>();
+        renderObject->m_mesh->m_vertexArray = make_shared<vertexArray_t>(
+                make_shared<vertexBuffer_t>(s_verts, (u32)sizeof(s_verts)),
+                make_shared<indexBuffer_t>(s_idx, (u32)(sizeof(s_idx) / sizeof(s_idx[0]))));
+        renderObject->m_mesh->m_shader =
                 make_shared<shader_t>("../source/shaders/char.vs", "../source/shaders/char.fs");
 
         s_ready = true;
@@ -110,6 +110,6 @@ void character_t::update(float dt) {
     // Update hitbox position to match character position
     hitbox.updatePosition(glm::vec3(position));
 
-    renderObject->m_Transform.m_position = position;
-    renderObject->m_Transform.m_scale = glm::vec3(scale, 1.0);
+    renderObject->m_transform.m_position = position;
+    renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
 }
