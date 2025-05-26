@@ -2,6 +2,7 @@
 #define INK_APPLICATION_H
 
 #define GLFW_INCLUDE_NONE
+#include "./core/entityManager.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
@@ -25,8 +26,8 @@ public:
 private:
     application_t();
 
-    int width = 1920;
-    int height = 1080;
+    int width = 1280;
+    int height = 720;
     const char *title = "INK";
     GLFWwindow *window = nullptr;
 
@@ -34,8 +35,8 @@ private:
     static application_t *s_instance;
 
     // The main player character
-    character_t *player = nullptr;
-    platform_t *platform = nullptr;
+    std::shared_ptr<character_t> player = nullptr;
+    entityManager_t *entityManager = nullptr;
 };
 
-#endif // INK_APPLICATION_H
+#endif  // INK_APPLICATION_H

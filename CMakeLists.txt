@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_C_COMPILE_OBJECT)
 # set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_subdirectory(vendor/glfw)
+add_subdirectory(vendor/glfw EXCLUDE_FROM_ALL)
 
 # set(CMAKE_BUILD_TYPE Debug)
 
@@ -34,6 +34,8 @@ target_sources(Ink PUBLIC
 
     source/core/application.h
     source/core/application.cc
+    source/core/entityManager.h
+    source/core/entityManager.cc
     source/core/entry.cc
 )
 
