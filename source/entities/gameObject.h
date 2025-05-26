@@ -1,6 +1,7 @@
 #pragma once
 #include "hitbox.h"
 #include <glm/glm.hpp>
+#include <renderer/renderer.h>
 #include <string>
 
 class gameObject_t {
@@ -16,6 +17,8 @@ public:
     glm::vec2 scale;
     hitbox_t hitbox;
     float mass = 0.0f;  // 0 ⇒ static / not affected by gravity
+
+    std::shared_ptr<sceneObject_t> renderObject = nullptr;
 
     virtual void update(float dt) = 0;
     virtual void draw() = 0;

@@ -14,7 +14,6 @@ class character_t : public gameObject_t {
 public:
     // speed scalar for planar movement
     float speed = 1.0f;
-    shared_ptr<sceneObject_t> renderObject;
 
     drawMode_e drawMode = drawMode_e::none;
 

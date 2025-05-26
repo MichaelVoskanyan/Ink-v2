@@ -7,6 +7,8 @@
 #include <entities/character.h>
 #include <entities/platform.h>
 
+#include <mutex>
+
 /**
  * Simple application loop with window setup/cleanup.
  */
@@ -15,6 +17,9 @@ public:
     // Access the single application instance
     static application_t *getInstance();
     // Main loop: update and render
+    void updateThread();
+    void renderThread();
+
     void run();
 
     ~application_t();
@@ -25,6 +30,8 @@ public:
 
 private:
     application_t();
+
+    std::mutex m_mutex;
 
     int width = 1280;
     int height = 720;

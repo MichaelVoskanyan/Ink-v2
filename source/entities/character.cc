@@ -39,10 +39,10 @@ character_t::character_t(const glm::vec3 &startPos, float speedValue, float mass
         renderObject = make_shared<sceneObject_t>();
         renderObject->m_mesh = make_shared<mesh_t>();
         renderObject->m_mesh->m_vertexArray = make_shared<vertexArray_t>(
-                make_shared<vertexBuffer_t>(s_verts, (u32)sizeof(s_verts)),
-                make_shared<indexBuffer_t>(s_idx, (u32)(sizeof(s_idx) / sizeof(s_idx[0]))));
+                make_shared<vertexBuffer_t>(s_verts, (u32) sizeof(s_verts)),
+                make_shared<indexBuffer_t>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
         renderObject->m_mesh->m_shader =
-                make_shared<shader_t>("../../source/shaders/char.vs", "../../source/shaders/char.fs");
+                make_shared<shader_t>("../source/shaders/char.vs", "../source/shaders/char.fs");
 
         s_ready = true;
     }
@@ -99,8 +99,8 @@ void character_t::resolveCollision(gameObject_t *other) {
 }
 
 void character_t::update(float dt) {
-    handleKeyInput();
-    handleMouseInput();
+    // handleKeyInput();
+    // handleMouseInput();
     // Optional gravity
     if (affectedByGravity()) {
         velocity.y -= 1.0f * dt * mass;  // Multiply by mass instead of dividing
@@ -113,7 +113,4 @@ void character_t::update(float dt) {
 
     renderObject->m_transform.m_position = position;
     renderObject->m_transform.m_scale = glm::vec3(scale, 1.0);
-
-    auto rend = renderer_t::getInstance();
-    rend->submit(renderObject);
 }

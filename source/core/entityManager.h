@@ -20,36 +20,41 @@
  */
 class entityManager_t {
 public:
-  /*───── singleton access ───────────────────────────────────────────────*/
-  static entityManager_t *instance();
+    /*───── singleton access ───────────────────────────────────────────────*/
+    static entityManager_t *instance();
 
-  /*───── factory helper; hides std::make_unique ─────────────────────────*/
-  template <class T, class... Args> std::shared_ptr<T> add(Args &&...args);
+    /*───── factory helper; hides std::make_unique ─────────────────────────*/
+    template <class T, class... Args>
+    std::shared_ptr<T> add(Args &&...args);
 
-  /*───── per-frame hooks ────────────────────────────────────────────────*/
-  void update(float dt);
-  void draw();
+    /*───── per-frame hooks ────────────────────────────────────────────────*/
+    void update(float dt);
+    void draw();
 
-  /*───── rule of five: keep singleton unique ───────────────────────────*/
-  entityManager_t(const entityManager_t &) = delete;
-  entityManager_t &operator=(const entityManager_t &) = delete;
-  entityManager_t(entityManager_t &&) = delete;
-  entityManager_t &operator=(entityManager_t &&) = delete;
+    /*───── rule of five: keep singleton unique ───────────────────────────*/
+    entityManager_t(const entityManager_t &) = delete;
+    entityManager_t &operator=(const entityManager_t &) = delete;
+    entityManager_t(entityManager_t &&) = delete;
+    entityManager_t &operator=(entityManager_t &&) = delete;
+
+    /*───── accessors ─────────────────────────────────────────────────────*/
+    const std::vector<std::shared_ptr<gameObject_t>> &getEntities() const {
+        return m_entities;
+    }
 
 private:
-  entityManager_t() = default;
-  ~entityManager_t() = default;
+    entityManager_t() = default;
+    ~entityManager_t() = default;
 
-  std::vector<std::shared_ptr<gameObject_t>> m_entities;
+    std::vector<std::shared_ptr<gameObject_t>> m_entities;
 };
 
 /*───────────────────────────── template impls ─────────────────────────────*/
 template <class T, class... Args>
 std::shared_ptr<T> entityManager_t::add(Args &&...args) {
-  static_assert(std::is_base_of_v<gameObject_t, T>,
-                "T must derive from gameObject_t");
+    static_assert(std::is_base_of_v<gameObject_t, T>, "T must derive from gameObject_t");
 
-  auto ptr = std::make_shared<T>(std::forward<Args>(args)...);
-  m_entities.emplace_back(ptr);
-  return ptr;
+    auto ptr = std::make_shared<T>(std::forward<Args>(args)...);
+    m_entities.emplace_back(ptr);
+    return ptr;
 }

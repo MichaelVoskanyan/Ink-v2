@@ -32,7 +32,6 @@ class renderer_t {
     glm::mat4 m_projMat;
 
 public:
-
     static renderer_t *getInstance() {
         if (s_instance == nullptr) {
             s_instance = new renderer_t();

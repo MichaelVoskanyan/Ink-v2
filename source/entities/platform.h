@@ -9,7 +9,6 @@ class platform_t : public gameObject_t {
 public:
     platformType_e type;
     bool isDrawn;
-    shared_ptr<sceneObject_t> renderObject;
 
     platform_t(platformType_e type, const glm::vec3 &pos, float massValue, const glm::vec2 &scale,
                bool isDrawn);

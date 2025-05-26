@@ -1,5 +1,6 @@
 // application.cpp
 #include "application.h"
+#include "KHR/khrplatform.h"
 #include "entityManager.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
@@ -9,6 +10,9 @@
 #include <renderer/buffers.h>
 #include <renderer/shader.h>
 #include <stdexcept>
+#include <thread>
+#include <atomic>
+#include <condition_variable>
 
 application_t *application_t::s_instance = nullptr;
 renderer_t *renderer_t::s_instance = nullptr;
@@ -90,6 +94,35 @@ application_t::~application_t() {
     glfwTerminate();
 }
 
+std::condition_variable cv;
+std::atomic<bool> updated{false};
+std::atomic<bool> running{true};
+
+void application_t::updateThread() {
+    const float fixedDt = 1.f / 60.f;
+    float accumulator = 0.0f;
+    double lastTime = glfwGetTime();
+
+    while (running) {
+        double now = glfwGetTime();
+        float frameT = static_cast<float>(now - lastTime);
+        lastTime = now;
+        accumulator += frameT;
+
+        while (accumulator >= fixedDt) {
+            {
+                std::lock_guard<std::mutex> lock(m_mutex);
+                entityManager->update(fixedDt);
+            }
+
+            accumulator -= fixedDt;
+            updated = true;
+            cv.notify_one();
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+}
+
 void application_t::run() {
     // target fixed physics step: 1/60th of a second
     // see https://gafferongames.com/post/fix_your_timestep/
@@ -98,27 +131,47 @@ void application_t::run() {
 
     auto renderer = renderer_t::getInstance();
 
+    std::thread updater(&application_t::updateThread, this);
+
+    {
+        std::unique_lock<std::mutex> lock(m_mutex);
+        cv.wait(lock, [] {
+            return updated.load();
+        });
+        updated = false;
+    }
+
     double lastTime = glfwGetTime();
     while (!glfwWindowShouldClose(window)) {
+        player->handleKeyInput();
+        player->handleMouseInput();
+
         // 1. measure real elapsed time
-        double now = glfwGetTime();
-        float frameT = static_cast<float>(now - lastTime);
-        lastTime = now;
+        {
+            std::unique_lock<std::mutex> lock(m_mutex);
+            cv.wait(lock, [] {
+                return updated.load();
+            });
+            updated = false;
+        }
+
         renderer->beginScene(glm::mat4(1.f), glm::mat4(1.f));
-        // 2. accumulate and step physics in fixed increments
-        accumulator += frameT;
-        while (accumulator >= fixedDt) {
-            // process all your physics/logic at a steady 60 Hz
-            entityManager->update(fixedDt);
-            accumulator -= fixedDt;
+        for (const auto &entity: entityManager->getEntities()) {
+            if (entity->renderObject == nullptr)
+                continue;  // skip entities without render objects.
+            renderer->submit(entity->renderObject);
         }
 
         // 3. render
         // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         // entityManager->draw();
         renderer->endScene();
+        renderer->clearQueue();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    running = false;
+    updater.join();
 }
