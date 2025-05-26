@@ -14,12 +14,12 @@ class character_t : public gameObject_t {
 public:
     // speed scalar for planar movement
     float speed = 1.0f;
-    hitbox_t hitbox;
+    hitbox_t hitbox{std::move(glm::vec2(1.f)), std::move(glm::vec2(0.f))};
     drawMode_e drawMode = drawMode_e::none;
 
     // Constructor: initialize position and speed, optional mass
-    character_t(const glm::vec3 &startPos, float speedValue = 1.0f, float massValue = 1.0f,
-                glm::vec2 scale = glm::vec2(1.0f));
+    character_t(const glm::vec3 &startPos, float speedValue, float massValue,
+                glm::vec2 scale);
 
     // Input handling
     void handleKeyInput();
@@ -33,7 +33,7 @@ public:
         return true;
     }
     bool shouldMoveOnCollision() const override {
-        return true; // Character should move during collision resolution
+        return true;  // Character should move during collision resolution
     }
     bool isJumping() const {
         return m_isJumping;

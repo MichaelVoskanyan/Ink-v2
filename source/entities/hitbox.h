@@ -3,7 +3,8 @@
 
 class hitbox_t {
 public:
-    hitbox_t(const glm::vec2 &size = glm::vec2(1.0f));
+    hitbox_t();
+    hitbox_t(const glm::vec2 &size, const glm::vec2 &position);
 
     // Update the hitbox position based on entity position (ignoring z)
     void updatePosition(const glm::vec2 &entityPos);
@@ -29,9 +30,10 @@ public:
     void setActive(bool active) {
         isActive = active;
     }
-    bool isActive = true; // We can make this settable to disable hitboxes for certain entities
+    bool isActive = true;  // We can make this settable to disable hitboxes for
+                           // certain entities
 
 private:
-    glm::vec2 position; // Center position
-    glm::vec2 size; // Width and height
+    glm::vec2 position;  // Center position
+    glm::vec2 size;      // Width and height
 };

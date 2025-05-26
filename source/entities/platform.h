@@ -11,13 +11,14 @@ public:
     bool isDrawn;
     hitbox_t hitbox;
 
-    platform_t(platformType_e type, const glm::vec3 &pos, float massValue, const glm::vec2 &scale = glm::vec2(1.0f),
-               bool isDrawn = false);
+    platform_t(platformType_e type, const glm::vec3 &pos, float massValue,
+               const glm::vec2 &scale, bool isDrawn);
 
     void update(float dt) override;
     void draw() override;
     bool hasCollision() const override {
         // Only stationary and moving platforms have collision
-        return type == platformType_e::stationary || type == platformType_e::moving;
+        return type == platformType_e::stationary ||
+               type == platformType_e::moving;
     }
 };
