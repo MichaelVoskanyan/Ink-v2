@@ -13,24 +13,24 @@
 /**
  * Simple application loop with window setup/cleanup.
  */
-class application_t {
+class Application {
 public:
     // Access the single application instance
-    static application_t *getInstance();
+    static Application *getInstance();
     // Main loop: update and render
     void updateThread();
     void renderThread();
 
     void run();
 
-    ~application_t();
+    ~Application();
 
     // Delete copy operations
-    application_t(const application_t &app) = delete;
-    application_t &operator=(const application_t &app) = delete;
+    Application(const Application &app) = delete;
+    Application &operator=(const Application &app) = delete;
 
 private:
-    application_t();
+    Application();
 
     std::mutex m_mutex;
 
@@ -40,13 +40,13 @@ private:
     GLFWwindow *window = nullptr;
 
     // Singleton instance
-    static application_t *s_instance;
+    static Application *s_instance;
 
     // The main player character
-    std::shared_ptr<character_t> player = nullptr;
+    std::shared_ptr<Character> player = nullptr;
 
-    entityManager_t *entityManager = nullptr;
-    std::shared_ptr<textureManager_t> textureManager = nullptr;
+    EntityManager *entityManager = nullptr;
+    std::shared_ptr<TextureManager> textureManager = nullptr;
 };
 
 #endif  // INK_APPLICATION_H

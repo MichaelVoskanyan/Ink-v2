@@ -1,10 +1,9 @@
 #ifndef INK_RENDERER_H
 #define INK_RENDERER_H
 
-#include "shader.h"
-#include "buffers.h"
 #include "textureManager.h"
-#include "../core/transform.h"
+
+#include "scene_object.h"
 
 #include <memory>
 #include <vector>
@@ -12,31 +11,20 @@
 using std::shared_ptr;
 using std::vector;
 
-struct mesh_t {
-    shared_ptr<vertexArray_t> m_vertexArray;
-    shared_ptr<shader_t> m_shader;
-};
+class Renderer {
+    static Renderer *s_instance;
 
-struct sceneObject_t {
-    shared_ptr<mesh_t> m_mesh;
-    uint32_t m_textureID;
-    transform_t m_transform;
-};
+    Renderer() = default;
+    ~Renderer() = default;
 
-class renderer_t {
-    static renderer_t *s_instance;
-
-    renderer_t() = default;
-    ~renderer_t() = default;
-
-    vector<shared_ptr<sceneObject_t>> m_renderQueue;
+    vector<shared_ptr<SceneObject>> m_renderQueue;
     glm::mat4 m_viewMat;
     glm::mat4 m_projMat;
 
 public:
-    static renderer_t *getInstance() {
+    static Renderer *getInstance() {
         if (s_instance == nullptr) {
-            s_instance = new renderer_t();
+            s_instance = new Renderer();
         }
         return s_instance;
     }
@@ -46,7 +34,7 @@ public:
         m_projMat = projMat;
     }
 
-    void submit(const std::shared_ptr<sceneObject_t> &object) {
+    void submit(const std::shared_ptr<SceneObject> &object) {
         m_renderQueue.push_back(object);
     }
 
@@ -61,8 +49,9 @@ public:
             obj->m_mesh->m_vertexArray->bind();
             obj->m_mesh->m_shader->bind();
 
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, obj->m_textureID);
+            if (obj->m_mesh->m_texture) {
+                obj->m_mesh->m_texture->bind();
+            }
 
             obj->m_mesh->m_shader->setMat4("u_viewMat", m_viewMat);
             obj->m_mesh->m_shader->setMat4("u_projMat", m_projMat);

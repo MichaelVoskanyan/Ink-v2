@@ -17,15 +17,14 @@
 
 namespace fs = std::filesystem;
 
-class shader_t
-{
+class Shader {
 public:
     // ID or shader handle
     unsigned int rendererID;
 
     // Constructor, must have path to vertex and fragment shaders.
     // Local path is accepted, must be prepended with '/'
-    shader_t(const char *vertexPath, const char *fragmentPath);
+    Shader(const char *vertexPath, const char *fragmentPath);
 
     // Binds shader for use
     void bind();
@@ -39,4 +38,4 @@ public:
     void setMat4(const std::string &name, glm::mat4 value) const;
 };
 
-#endif // CESIUM_SHADER_H
+#endif  // CESIUM_SHADER_H

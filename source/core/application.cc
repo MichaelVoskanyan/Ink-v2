@@ -14,22 +14,22 @@
 #include <atomic>
 #include <condition_variable>
 
-application_t *application_t::s_instance = nullptr;
-renderer_t *renderer_t::s_instance = nullptr;
+Application *Application::s_instance = nullptr;
+Renderer *Renderer::s_instance = nullptr;
 
 void framebufferSizeCallback(GLFWwindow *window, int w, int h) {
     std::cout << "[application] Resized to " << w << "x" << h << "\n";
     glViewport(0, 0, w, h);
 }
 
-application_t *application_t::getInstance() {
+Application *Application::getInstance() {
     if (!s_instance) {
-        s_instance = new application_t();
+        s_instance = new Application();
     }
     return s_instance;
 }
 
-application_t::application_t() {
+Application::Application() {
     std::cout << "[application] Initializing GLFW...\n";
     if (!glfwInit())
         throw std::runtime_error("Failed to initialize GLFW");
@@ -65,34 +65,34 @@ application_t::application_t() {
     glClearColor(0.589f, 0.443f, 0.09f, 1.f);
     std::cout << "[application] Clear color set.\n";
 
-    entityManager = entityManager_t::instance();
-    textureManager = textureManager_t::instance();
+    entityManager = EntityManager::instance();
+    textureManager = TextureManager::instance();
 
     textureManager->loadTexture("mossy_brick", "assets/texture/mossy_brick.png");
     textureManager->loadTexture("default_brick", "assets/texture/default_brick.png");
 
     // Finally, create the player (which will trigger shader loading)
     std::cout << "[application] Creating player character...\n";
-    player = entityManager->add<character_t>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
-                                             glm::vec2(0.2f, 0.2f));
+    player = entityManager->add<Character>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
+                                           glm::vec2(0.2f, 0.2f));
     std::cout << "[application] Player created.\n";
 
     // Create a test platform
     std::cout << "[application] Creating test platforms...\n";
-    entityManager->add<platform_t>(platformType_e::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
-                                   glm::vec2(5.0f, 0.2f), true);
-    entityManager->add<platform_t>(platformType_e::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
-                                   glm::vec2(0.2f, 0.5f),
-                                   true);  // adding a scale to make the platform wider
-    entityManager->add<platform_t>(platformType_e::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
-                                   glm::vec2(0.5f, 0.2f),
-                                   true);  // adding a scale to make the platform wider
+    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
+                                 glm::vec2(5.0f, 0.2f), true);
+    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
+                                 glm::vec2(0.2f, 0.5f),
+                                 true);  // adding a scale to make the platform wider
+    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
+                                 glm::vec2(0.5f, 0.2f),
+                                 true);  // adding a scale to make the platform wider
     // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
     // up later
     std::cout << "[application] Platforms created.\n";
 }
 
-application_t::~application_t() {
+Application::~Application() {
     std::cout << "[application] Terminating GLFW...\n";
     glfwDestroyWindow(window);
     glfwTerminate();
@@ -102,7 +102,7 @@ std::condition_variable cv;
 std::atomic<bool> updated{false};
 std::atomic<bool> running{true};
 
-void application_t::updateThread() {
+void Application::updateThread() {
     const float fixedDt = 1.f / 60.f;
     float accumulator = 0.0f;
     double lastTime = glfwGetTime();
@@ -127,15 +127,15 @@ void application_t::updateThread() {
     }
 }
 
-void application_t::run() {
+void Application::run() {
     // target fixed physics step: 1/60th of a second
     // see https://gafferongames.com/post/fix_your_timestep/
     const float fixedDt = 1.0f / 60.0f;
     float accumulator = 0.0f;
 
-    auto renderer = renderer_t::getInstance();
+    auto renderer = Renderer::getInstance();
 
-    std::thread updater(&application_t::updateThread, this);
+    std::thread updater(&Application::updateThread, this);
 
     {
         std::unique_lock<std::mutex> lock(m_mutex);

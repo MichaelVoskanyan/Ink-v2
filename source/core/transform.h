@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-struct transform_t {
+struct Transform {
     glm::vec3 m_position;
     glm::vec3 m_scale = glm::vec3(1.f);
     glm::quat m_rotation = glm::quat();

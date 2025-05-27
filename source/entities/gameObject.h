@@ -5,24 +5,24 @@
 #include <renderer/textureManager.h>
 #include <string>
 
-class gameObject_t {
+class GameObject {
 public:
-    gameObject_t(const glm::vec2 &s = glm::vec2(1.0f, 1.0f),
-                 const glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
+    GameObject(const glm::vec2 &s = glm::vec2(1.0f, 1.0f),
+               const glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
         : position(p), velocity(0.0f), scale(s), hitbox(s, p)  // build hit-box once, with real data
     {
         if (!s_textureManager) {
-            s_textureManager = textureManager_t::instance();
+            s_textureManager = TextureManager::instance();
         }
     }
 
     glm::vec3 position;
     glm::vec2 velocity;
     glm::vec2 scale;
-    hitbox_t hitbox;
+    Hitbox hitbox;
     float mass = 0.0f;  // 0 ⇒ static / not affected by gravity
 
-    std::shared_ptr<sceneObject_t> renderObject = nullptr;
+    std::shared_ptr<SceneObject> renderObject = nullptr;
 
     virtual void update(float dt) = 0;
     virtual void draw() = 0;
@@ -31,7 +31,7 @@ public:
     virtual bool hasCollision() const {
         return false;
     }
-    virtual void resolveCollision(gameObject_t *other) {
+    virtual void resolveCollision(GameObject *other) {
     }
     virtual bool shouldMoveOnCollision() const {
         return false;
@@ -40,11 +40,12 @@ public:
     bool affectedByGravity() const {
         return mass > 0.0f;
     }
-    ~gameObject_t() = default;
+    ~GameObject() = default;
 
-    static void initializeTextureManager(std::shared_ptr<textureManager_t> mgr) {
+    static void initializeTextureManager(std::shared_ptr<TextureManager> mgr) {
         s_textureManager = std::move(mgr);
     }
+
 protected:
-    inline static std::shared_ptr<textureManager_t> s_textureManager = nullptr;
+    inline static std::shared_ptr<TextureManager> s_textureManager = nullptr;
 };

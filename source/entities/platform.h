@@ -4,20 +4,20 @@
 #include "renderer/textureManager.h"
 #include <glm/glm.hpp>
 
-enum class platformType_e { stationary, moving, falling, drawn };
+enum class PlatformType { stationary, moving, falling, drawn };
 
-class platform_t : public gameObject_t {
+class Platform : public GameObject {
 public:
-    platformType_e type;
+    PlatformType type;
     bool isDrawn;
 
-    platform_t(platformType_e type, const glm::vec3 &pos, float massValue, const glm::vec2 &scale,
-               bool isDrawn);
+    Platform(PlatformType type, const glm::vec3 &pos, float massValue, const glm::vec2 &scale,
+             bool isDrawn);
 
     void update(float dt) override;
     void draw() override;
     bool hasCollision() const override {
         // Only stationary and moving platforms have collision
-        return type == platformType_e::stationary || type == platformType_e::moving;
+        return type == PlatformType::stationary || type == PlatformType::moving;
     }
 };

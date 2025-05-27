@@ -8,25 +8,27 @@
 
 namespace fs = std::filesystem;
 
-shader_t::shader_t(const char *vertexPath, const char *fragmentPath) {
+Shader::Shader(const char *vertexPath, const char *fragmentPath) {
     fs::path projectDir = fs::current_path();
+
 
     // Build full paths under source/shaders/
     // I think this is fine to hardcode
     // fs::path vertPath = vertexPath;
     // fs::path fragPath = fragmentPath;
 
-    // std::string vertPath = vertexPath, fragPath = fragmentPath;
+    std::string vertPath = std::string(SHADER_DIR) + vertexPath,
+                fragPath = std::string(SHADER_DIR) + fragmentPath;
 
-    std::cerr << "Loading vertex shader from:   " << vertexPath << "\n";
-    std::cerr << "Loading fragment shader from: " << fragmentPath << "\n";
+    std::cerr << "Loading vertex shader from:   " << vertPath << "\n";
+    std::cerr << "Loading fragment shader from: " << fragPath << "\n";
 
     std::string vertexCode, fragmentCode;
     {
-        std::ifstream vFile(vertexPath), fFile(fragmentPath);
+        std::ifstream vFile(vertPath), fFile(fragPath);
         if (!vFile || !fFile) {
-            throw std::runtime_error("Failed to open shader files:\n  " + std::string(vertexPath) +
-                                     "\n  " + fragmentPath);
+            throw std::runtime_error("Failed to open shader files:\n  " + std::string(vertPath) +
+                                     "\n  " + fragPath);
         }
         std::stringstream vs, fs;
         vs << vFile.rdbuf();
@@ -71,31 +73,31 @@ shader_t::shader_t(const char *vertexPath, const char *fragmentPath) {
     glDeleteShader(fragID);
 }
 
-void shader_t::bind() {
+void Shader::bind() {
     glUseProgram(rendererID);
 }
 
-void shader_t::setBool(const std::string &name, bool value) const {
+void Shader::setBool(const std::string &name, bool value) const {
     glUniform1i(glGetUniformLocation(rendererID, name.c_str()), (int) value);
 }
 
-void shader_t::setInt(const std::string &name, int value) const {
+void Shader::setInt(const std::string &name, int value) const {
     glUniform1i(glGetUniformLocation(rendererID, name.c_str()), value);
 }
 
-void shader_t::setFloat(const std::string &name, float value) const {
+void Shader::setFloat(const std::string &name, float value) const {
     glUniform1f(glGetUniformLocation(rendererID, name.c_str()), value);
 }
 
-void shader_t::setVec3(const std::string &name, glm::vec3 value) const {
+void Shader::setVec3(const std::string &name, glm::vec3 value) const {
     glUniform3fv(glGetUniformLocation(rendererID, name.c_str()), 1, glm::value_ptr(value));
 }
 
-void shader_t::setVec3(const std::string &name, float x, float y, float z) const {
+void Shader::setVec3(const std::string &name, float x, float y, float z) const {
     glUniform3f(glGetUniformLocation(rendererID, name.c_str()), x, y, z);
 }
 
-void shader_t::setMat4(const std::string &name, glm::mat4 value) const {
+void Shader::setMat4(const std::string &name, glm::mat4 value) const {
     glUniformMatrix4fv(glGetUniformLocation(rendererID, name.c_str()), 1, GL_FALSE,
                        glm::value_ptr(value));
 }

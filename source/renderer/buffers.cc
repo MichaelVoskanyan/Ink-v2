@@ -2,48 +2,47 @@
 
 #include <glad/glad.h>
 
-indexBuffer_t::indexBuffer_t(u32 *indices, u32 count) : m_count(count) {
+IndexBuffer::IndexBuffer(u32 *indices, u32 count) : m_count(count) {
     glGenBuffers(1, &m_rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_rendererID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(u32), indices, GL_STATIC_DRAW);
 }
 
-indexBuffer_t::~indexBuffer_t() {
+IndexBuffer::~IndexBuffer() {
     glDeleteBuffers(1, &m_rendererID);
 }
 
-void indexBuffer_t::bind() const {
+void IndexBuffer::bind() const {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_rendererID);
 }
 
-void indexBuffer_t::unbind() const {
+void IndexBuffer::unbind() const {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-u32 indexBuffer_t::getCount() const {
+u32 IndexBuffer::getCount() const {
     return m_count;
 }
 
-vertexBuffer_t::vertexBuffer_t(f32 *vertices, u32 size) : m_rendererID(0), m_size(size) {
+VertexBuffer::VertexBuffer(f32 *vertices, u32 size) : m_rendererID(0), m_size(size) {
     glGenBuffers(1, &m_rendererID);
     glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
     glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 }
 
-vertexBuffer_t::~vertexBuffer_t() {
+VertexBuffer::~VertexBuffer() {
     glDeleteBuffers(1, &m_rendererID);
 }
 
-void vertexBuffer_t::bind() const {
+void VertexBuffer::bind() const {
     glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);
 }
 
-void vertexBuffer_t::unbind() const {
+void VertexBuffer::unbind() const {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-vertexArray_t::vertexArray_t(const shared_ptr<vertexBuffer_t> &vb,
-                             const shared_ptr<indexBuffer_t> &ib)
+VertexArray::VertexArray(const shared_ptr<VertexBuffer> &vb, const shared_ptr<IndexBuffer> &ib)
     : m_rendererID(0), m_vertexBuffer(vb), m_indexBuffer(ib) {
     glGenVertexArrays(1, &m_rendererID);
     glBindVertexArray(m_rendererID);
@@ -59,20 +58,20 @@ vertexArray_t::vertexArray_t(const shared_ptr<vertexBuffer_t> &vb,
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(f32), (void *) (sizeof(f32) * 6));
 }
 
-vertexArray_t::~vertexArray_t() {
+VertexArray::~VertexArray() {
     glDeleteVertexArrays(1, &m_rendererID);
 }
 
-void vertexArray_t::bind() const {
+void VertexArray::bind() const {
     glBindVertexArray(m_rendererID);
     m_vertexBuffer->bind();
     m_indexBuffer->bind();
 }
 
-void vertexArray_t::unbind() const {
+void VertexArray::unbind() const {
     glBindVertexArray(0);
 }
 
-u32 vertexArray_t::getIndexCount() const {
+u32 VertexArray::getIndexCount() const {
     return m_indexBuffer->getCount();
 }

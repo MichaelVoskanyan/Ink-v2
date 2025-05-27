@@ -9,14 +9,14 @@ typedef unsigned int u32;
 typedef float f32;
 typedef double f64;
 
-class indexBuffer_t {
+class IndexBuffer {
 private:
     u32 m_rendererID;
     u32 m_count;
 
 public:
-    indexBuffer_t(u32 *indices, u32 count);
-    ~indexBuffer_t();
+    IndexBuffer(u32 *indices, u32 count);
+    ~IndexBuffer();
 
     void bind() const;
     void unbind() const;
@@ -24,28 +24,28 @@ public:
     u32 getCount() const;
 };
 
-class vertexBuffer_t {
+class VertexBuffer {
 private:
     u32 m_rendererID;
     u32 m_size;
 
 public:
-    vertexBuffer_t(f32 *vertices, u32 size);
-    ~vertexBuffer_t();
+    VertexBuffer(f32 *vertices, u32 size);
+    ~VertexBuffer();
 
     void bind() const;
     void unbind() const;
 };
 
-class vertexArray_t {
+class VertexArray {
 private:
     u32 m_rendererID;
-    shared_ptr<vertexBuffer_t> m_vertexBuffer;
-    shared_ptr<indexBuffer_t> m_indexBuffer;
+    shared_ptr<VertexBuffer> m_vertexBuffer;
+    shared_ptr<IndexBuffer> m_indexBuffer;
 
 public:
-    vertexArray_t(const shared_ptr<vertexBuffer_t> &vb, const shared_ptr<indexBuffer_t> &ib);
-    ~vertexArray_t();
+    VertexArray(const shared_ptr<VertexBuffer> &vb, const shared_ptr<IndexBuffer> &ib);
+    ~VertexArray();
 
     void bind() const;
     void unbind() const;

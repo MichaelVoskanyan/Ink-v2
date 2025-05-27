@@ -14,6 +14,8 @@ set(GLFW_BUILD_TESTS OFF CACHE INTERNAL "Build the GLFW test programs")
 set(GLFW_BUILD_DOCS OFF CACHE INTERNAL "Build the GLFW documentations")
 set(GLFW_INSTALL OFF CACHE INTERNAL "Generate installation target")
 
+add_definitions(-DSHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders/")
+
 add_executable(Ink)
 
 target_sources(Ink PUBLIC

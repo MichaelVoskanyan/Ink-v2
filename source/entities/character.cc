@@ -25,9 +25,9 @@ static float s_verts[] = {-0.5f, -0.5f, 0.0f, /* skip 5 floats */ 0,
                           0,     1,     1,    0};
 static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
-character_t::character_t(const glm::vec3 &startPos, float speedValue, float massValue,
-                         const glm::vec2 &scale)
-    : gameObject_t(scale, startPos), speed(speedValue) {
+Character::Character(const glm::vec3 &startPos, float speedValue, float massValue,
+                     const glm::vec2 &scale)
+    : GameObject(scale, startPos), speed(speedValue) {
     // Initialize base class members
     this->scale = scale;
     mass = massValue;
@@ -36,19 +36,18 @@ character_t::character_t(const glm::vec3 &startPos, float speedValue, float mass
 
     // One‐time GL resource setup
     if (!s_ready) {
-        renderObject = make_shared<sceneObject_t>();
-        renderObject->m_mesh = make_shared<mesh_t>();
-        renderObject->m_mesh->m_vertexArray = make_shared<vertexArray_t>(
-                make_shared<vertexBuffer_t>(s_verts, (u32) sizeof(s_verts)),
-                make_shared<indexBuffer_t>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
-        renderObject->m_mesh->m_shader =
-                make_shared<shader_t>("assets/shaders/char.vs", "assets/shaders/char.fs");
+        renderObject = make_shared<SceneObject>();
+        renderObject->m_mesh = make_shared<Mesh>();
+        renderObject->m_mesh->m_vertexArray = make_shared<VertexArray>(
+                make_shared<VertexBuffer>(s_verts, (u32) sizeof(s_verts)),
+                make_shared<IndexBuffer>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
+        renderObject->m_mesh->m_shader = make_shared<Shader>("char.vs", "char.fs");
 
         s_ready = true;
     }
 }
 
-void character_t::handleKeyInput() {
+void Character::handleKeyInput() {
     GLFWwindow *win = glfwGetCurrentContext();
     glm::vec2 dir(0.0f);
     if (glfwGetKey(win, GLFW_KEY_A) == GLFW_PRESS)
@@ -67,14 +66,14 @@ void character_t::handleKeyInput() {
     velocity.x = dir.x * (speed * 0.2f);  // Reduce the speed to 20% of the original
 }
 
-void character_t::handleMouseInput() {
+void Character::handleMouseInput() {
     GLFWwindow *win = glfwGetCurrentContext();
     if (glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
-        drawMode = static_cast<drawMode_e>((int(drawMode) + 1) % 4);
+        drawMode = static_cast<DrawMode>((int(drawMode) + 1) % 4);
     }
 }
 
-void character_t::resolveCollision(gameObject_t *other) {
+void Character::resolveCollision(GameObject *other) {
     std::cout << "[character] Checking collision with platform" << std::endl;
     std::cout << "  Character pos: (" << position.x << ", " << position.y << ")" << std::endl;
     std::cout << "  Character velocity: (" << velocity.x << ", " << velocity.y << ")" << std::endl;
@@ -98,7 +97,7 @@ void character_t::resolveCollision(gameObject_t *other) {
     }
 }
 
-void character_t::update(float dt) {
+void Character::update(float dt) {
     // handleKeyInput();
     // handleMouseInput();
     // Optional gravity

@@ -1,19 +1,19 @@
 #pragma once
 #include <glm/glm.hpp>
 
-class hitbox_t {
+class Hitbox {
 public:
-    hitbox_t();
-    hitbox_t(const glm::vec2 &size, const glm::vec3 &startPos);
+    Hitbox();
+    Hitbox(const glm::vec2 &size, const glm::vec3 &startPos);
 
     // Update the hitbox position based on entity position (ignoring z)
     void updatePosition(const glm::vec3 &entityPos);
 
     // Check if this hitbox intersects with another
-    bool intersects(const hitbox_t &other) const;
+    bool intersects(const Hitbox &other) const;
 
     // Get collision resolution vector (how much to move to resolve collision)
-    glm::vec2 getCollisionResolution(const hitbox_t &other) const;
+    glm::vec2 getCollisionResolution(const Hitbox &other) const;
 
     // Getters
     const glm::vec2 &getPosition() const {

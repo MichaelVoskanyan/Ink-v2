@@ -8,18 +8,17 @@
 #include <GLFW/glfw3.h>
 
 // drawMode_e lets us easily add new brush types later
-enum class drawMode_e { none, platform, weapon, projectile };
+enum class DrawMode { none, platform, weapon, projectile };
 
-class character_t : public gameObject_t {
+class Character : public GameObject {
 public:
     // speed scalar for planar movement
     float speed = 1.0f;
 
-    drawMode_e drawMode = drawMode_e::none;
+    DrawMode drawMode = DrawMode::none;
 
     // Constructor: initialize position and speed, optional mass
-    character_t(const glm::vec3 &startPos, float speedValue, float massValue,
-                const glm::vec2 &scale);
+    Character(const glm::vec3 &startPos, float speedValue, float massValue, const glm::vec2 &scale);
 
     // Input handling
     void handleKeyInput();
@@ -30,7 +29,7 @@ public:
     void draw() override {
         return;
     }
-    void resolveCollision(gameObject_t *other);
+    void resolveCollision(GameObject *other);
     bool hasCollision() const override {
         return true;
     }
