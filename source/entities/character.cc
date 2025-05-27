@@ -38,6 +38,7 @@ Character::Character(const glm::vec3 &startPos, float speedValue, float massValu
     if (!s_ready) {
         renderObject = make_shared<SceneObject>();
         renderObject->m_mesh = make_shared<Mesh>();
+        renderObject->m_mesh->m_texture = s_textureManager->getTexture("default_brick");
         renderObject->m_mesh->m_vertexArray = make_shared<VertexArray>(
                 make_shared<VertexBuffer>(s_verts, (u32) sizeof(s_verts)),
                 make_shared<IndexBuffer>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));

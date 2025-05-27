@@ -68,8 +68,8 @@ Application::Application() {
     entityManager = EntityManager::instance();
     textureManager = TextureManager::instance();
 
-    textureManager->loadTexture("mossy_brick", "assets/texture/mossy_brick.png");
-    textureManager->loadTexture("default_brick", "assets/texture/default_brick.png");
+    textureManager->loadTexture("mossy_brick", "assets/textures/mossy_brick.png");
+    textureManager->loadTexture("default_brick", "assets/textures/default_brick.png");
 
     // Finally, create the player (which will trigger shader loading)
     std::cout << "[application] Creating player character...\n";
