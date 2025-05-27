@@ -3,6 +3,7 @@
 
 #include "shader.h"
 #include "buffers.h"
+#include "textureManager.h"
 #include "../core/transform.h"
 
 #include <memory>
@@ -18,6 +19,7 @@ struct mesh_t {
 
 struct sceneObject_t {
     shared_ptr<mesh_t> m_mesh;
+    uint32_t m_textureID;
     transform_t m_transform;
 };
 
