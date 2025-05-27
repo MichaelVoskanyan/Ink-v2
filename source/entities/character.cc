@@ -42,7 +42,7 @@ character_t::character_t(const glm::vec3 &startPos, float speedValue, float mass
                 make_shared<vertexBuffer_t>(s_verts, (u32) sizeof(s_verts)),
                 make_shared<indexBuffer_t>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
         renderObject->m_mesh->m_shader =
-                make_shared<shader_t>("../assets/shaders/char.vs", "../assets/shaders/char.fs");
+                make_shared<shader_t>("assets/shaders/char.vs", "assets/shaders/char.fs");
 
         s_ready = true;
     }

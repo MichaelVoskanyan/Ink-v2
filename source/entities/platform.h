@@ -1,6 +1,7 @@
 #pragma once
 #include "gameObject.h"
 #include "renderer/renderer.h"
+#include "renderer/textureManager.h"
 #include <glm/glm.hpp>
 
 enum class platformType_e { stationary, moving, falling, drawn };

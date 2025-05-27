@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <memory>
 #include <cstdint>
 using namespace std;
 
@@ -17,7 +18,7 @@ struct spriteInfo_t {
 class textureManager_t {
 public:
     /// singleton
-    static textureManager_t& instance();
+    static shared_ptr<textureManager_t> instance();
 
     /// load a plain GL texture under 'name'
     bool loadTexture(const string& name,
@@ -49,10 +50,10 @@ public:
     textureManager_t(textureManager_t&&) = delete;
     textureManager_t& operator=(textureManager_t&&) = delete;
 
-private:
     textureManager_t() = default;
     ~textureManager_t();
 
+private:
     struct sheet_t {
         uint32_t texID;
         int texW, texH;

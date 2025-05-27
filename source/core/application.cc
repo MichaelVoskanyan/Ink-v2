@@ -66,6 +66,10 @@ application_t::application_t() {
     std::cout << "[application] Clear color set.\n";
 
     entityManager = entityManager_t::instance();
+    textureManager = textureManager_t::instance();
+
+    textureManager->loadTexture("mossy_brick", "assets/texture/mossy_brick.png");
+    textureManager->loadTexture("default_brick", "assets/texture/default_brick.png");
 
     // Finally, create the player (which will trigger shader loading)
     std::cout << "[application] Creating player character...\n";

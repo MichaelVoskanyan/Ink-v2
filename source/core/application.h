@@ -2,7 +2,8 @@
 #define INK_APPLICATION_H
 
 #define GLFW_INCLUDE_NONE
-#include "./core/entityManager.h"
+#include "entityManager.h"
+#include "renderer/textureManager.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
@@ -43,7 +44,9 @@ private:
 
     // The main player character
     std::shared_ptr<character_t> player = nullptr;
+
     entityManager_t *entityManager = nullptr;
+    std::shared_ptr<textureManager_t> textureManager = nullptr;
 };
 
 #endif  // INK_APPLICATION_H

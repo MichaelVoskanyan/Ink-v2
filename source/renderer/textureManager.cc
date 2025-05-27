@@ -7,8 +7,8 @@
 using namespace std;
 // include your image‐loader (stb_image.h) and GL headers
 
-textureManager_t& textureManager_t::instance() {
-    static textureManager_t inst;
+std::shared_ptr<textureManager_t> textureManager_t::instance() {
+    static auto inst = std::make_shared<textureManager_t>();
     return inst;
 }
 

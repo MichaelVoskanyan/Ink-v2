@@ -2,6 +2,7 @@
 #include "hitbox.h"
 #include <glm/glm.hpp>
 #include <renderer/renderer.h>
+#include <renderer/textureManager.h>
 #include <string>
 
 class gameObject_t {
@@ -10,6 +11,9 @@ public:
                  const glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
         : position(p), velocity(0.0f), scale(s), hitbox(s, p)  // build hit-box once, with real data
     {
+        if (!s_textureManager) {
+            s_textureManager = textureManager_t::instance();
+        }
     }
 
     glm::vec3 position;
@@ -37,4 +41,10 @@ public:
         return mass > 0.0f;
     }
     ~gameObject_t() = default;
+
+    static void initializeTextureManager(std::shared_ptr<textureManager_t> mgr) {
+        s_textureManager = std::move(mgr);
+    }
+protected:
+    inline static std::shared_ptr<textureManager_t> s_textureManager = nullptr;
 };

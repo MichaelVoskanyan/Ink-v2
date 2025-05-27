@@ -23,6 +23,9 @@ target_sources(Ink PUBLIC
     source/renderer/buffers.cc
     source/renderer/shader.h
     source/renderer/shader.cc
+    source/renderer/textureManager.h
+    source/renderer/textureManager.cc
+    source/renderer/stbi.cc
 
     source/entities/gameObject.h
     source/entities/character.h
@@ -43,6 +46,7 @@ target_include_directories(Ink PUBLIC
     vendor/glad/include
     vendor/glfw/include
     vendor/GLM
+    vendor 
     source
 )
 

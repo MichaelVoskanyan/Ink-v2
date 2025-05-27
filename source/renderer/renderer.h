@@ -61,6 +61,9 @@ public:
             obj->m_mesh->m_vertexArray->bind();
             obj->m_mesh->m_shader->bind();
 
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, obj->m_textureID);
+
             obj->m_mesh->m_shader->setMat4("u_viewMat", m_viewMat);
             obj->m_mesh->m_shader->setMat4("u_projMat", m_projMat);
 
