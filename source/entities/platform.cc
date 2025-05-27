@@ -36,8 +36,8 @@ Platform::Platform(PlatformType type, const glm::vec3 &startPos, float massValue
 
     // One‐time GL resource setup
     renderObject = std::make_shared<SceneObject>();
-    renderObject->m_textureID = s_textureManager->getTexture("mossy_brick");
     renderObject->m_mesh = std::make_shared<Mesh>();
+    renderObject->m_mesh->m_texture = s_textureManager->getTexture("mossy_brick");
     renderObject->m_mesh->m_vertexArray = std::make_shared<VertexArray>(
             std::make_shared<VertexBuffer>(s_verts, (u32) sizeof(s_verts)),
             std::make_shared<IndexBuffer>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));

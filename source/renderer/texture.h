@@ -4,7 +4,7 @@
 #include <stb_image.h>
 
 #include <glad/glad.h>
-
+#include <string>
 #include <cstdint>
 #include <iostream>
 
@@ -12,9 +12,9 @@ struct Texture {
     uint32_t m_rendererID;
     int m_width, m_height, m_channels;
 
-    Texture(const char *path) {
+    Texture(std::string path) {
         stbi_set_flip_vertically_on_load(true);
-        unsigned char *data = stbi_load(path, &m_width, &m_height, &m_channels, 0);
+        unsigned char *data = stbi_load(path.c_str(), &m_width, &m_height, &m_channels, 0);
         if (data) {
             glGenTextures(1, &m_rendererID);
             glBindTexture(GL_TEXTURE_2D, m_rendererID);

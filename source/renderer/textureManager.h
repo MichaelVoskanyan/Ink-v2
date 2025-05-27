@@ -1,60 +1,68 @@
-// textureManager.h
 #pragma once
 
 #include <string>
 #include <unordered_map>
 #include <memory>
 #include <cstdint>
+#include "texture.h"
+
 using namespace std;
 
 /// Holds everything you need to draw one frame
 struct SpriteInfo {
-    uint32_t texID;  // GL texture handle
-    int texWidth, texHeight;
-    int spriteWidth, spriteHeight;
-    int frameIndex;
+    shared_ptr<Texture> texture;   // pointer to the loaded texture
+    int spriteWidth;               // width of a single frame
+    int spriteHeight;              // height of a single frame
+    int frameIndex;                // index of the frame within the sheet
 };
 
 class TextureManager {
 public:
-    /// singleton
+    /// Get the singleton instance
     static shared_ptr<TextureManager> instance();
 
-    /// load a plain GL texture under 'name'
+    /// Load a plain texture under 'name'
     bool loadTexture(const string &name, const string &filePath);
 
-    /// get a raw texture ID (0 if not found)
-    uint32_t getTexture(const string &name) const;
+    /// Retrieve the Texture pointer you previously loaded (or nullptr)
+    shared_ptr<Texture> getTexture(const string &name) const;
 
-    /// load a sprite-sheet under 'sheetName' (you still bind by sheet)
-    /// texW/texH = full sheet dims, sW/sH = one frame dims
-    bool loadSpriteSheet(const string &sheetName, const string &filePath, int texW, int texH,
-                         int sW, int sH);
+    /**
+     * Load a sprite sheet under 'sheetName'
+     * spriteWidth/spriteHeight = dimensions of each frame
+     */
+    bool loadSpriteSheet(const string &sheetName,
+                         const string &filePath,
+                         int spriteWidth,
+                         int spriteHeight);
 
-    /// register one frame by its own key, pointing to a previously loaded sheet
-    /// e.g. registerSprite("character_walk_2", "character_walk", 2);
-    bool registerSprite(const string &spriteName, const string &sheetName, int frameIndex);
+    /**
+     * Register a single frame by its own key, pointing to a loaded sheet
+     * e.g. registerSprite("hero_run_2", "hero_run", 2);
+     */
+    bool registerSprite(const string &spriteName,
+                        const string &sheetName,
+                        int frameIndex);
 
-    /// fetch everything you need to draw that frame
-    /// nullptr if spriteName wasn’t registered
+    /// Fetch everything needed to draw that frame (nullptr if missing)
     const SpriteInfo *getSpriteInfo(const string &spriteName) const;
 
-    // no copies or moves
+    // disable copy/move
     TextureManager(const TextureManager &) = delete;
     TextureManager &operator=(const TextureManager &) = delete;
     TextureManager(TextureManager &&) = delete;
     TextureManager &operator=(TextureManager &&) = delete;
 
     TextureManager() = default;
-    ~TextureManager();
+    ~TextureManager() = default;
 
 private:
     struct Sheet {
-        uint32_t texID;
-        int texW, texH;
-        int sW, sH;
+        shared_ptr<Texture> texture; // wrapper holds width/height
+        int spriteWidth;
+        int spriteHeight;
     };
 
-    unordered_map<string, Sheet> sheetMap;
-    unordered_map<string, SpriteInfo> spriteMap;
+    unordered_map<string, Sheet> sheetMap;      // sheetName -> sheet data
+    unordered_map<string, SpriteInfo> spriteMap; // spriteName -> frame info
 };
