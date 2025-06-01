@@ -25,23 +25,26 @@ static float s_verts[] = {-0.5f, -0.5f, 0.0f, /* skip 5 floats */ 0,
                           0,     1,     1,    0};
 static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
-Character::Character(const glm::vec3 &startPos, float speedValue, float massValue,
+Character::Character(std::shared_ptr<Texture> texture,
+                     const glm::vec3 &startPos,
+                     float speedValue,
+                     float massValue,
                      const glm::vec2 &scale)
     : GameObject(scale, startPos), speed(speedValue) {
-    // Initialize base class members
     this->scale = scale;
     mass = massValue;
     position = startPos;
     velocity = glm::vec2(0.0f);
 
-    // One‐time GL resource setup
     if (!s_ready) {
         renderObject = make_shared<SceneObject>();
         renderObject->m_mesh = make_shared<Mesh>();
-        renderObject->m_mesh->m_texture = s_textureManager->getTexture("default_brick");
+        renderObject->m_mesh->m_texture = texture;
+
         renderObject->m_mesh->m_vertexArray = make_shared<VertexArray>(
-                make_shared<VertexBuffer>(s_verts, (u32) sizeof(s_verts)),
-                make_shared<IndexBuffer>(s_idx, (u32) (sizeof(s_idx) / sizeof(s_idx[0]))));
+            make_shared<VertexBuffer>(s_verts, sizeof(s_verts)),
+            make_shared<IndexBuffer>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
+
         renderObject->m_mesh->m_shader = make_shared<Shader>("char.vs", "char.fs");
 
         s_ready = true;
