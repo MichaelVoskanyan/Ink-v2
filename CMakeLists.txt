@@ -19,37 +19,39 @@ add_definitions(-DSHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders/")
 add_executable(Ink)
 
 target_sources(Ink PUBLIC
-    vendor/glad/src/glad.c
+        vendor/glad/src/glad.c
 
-    source/renderer/buffers.h
-    source/renderer/buffers.cc
-    source/renderer/shader.h
-    source/renderer/shader.cc
-    source/renderer/textureManager.h
-    source/renderer/textureManager.cc
-    source/renderer/stbi.cc
+        source/renderer/buffers.h
+        source/renderer/buffers.cc
+        source/renderer/shader.h
+        source/renderer/shader.cc
+        source/renderer/textureManager.h
+        source/renderer/textureManager.cc
+        source/renderer/stbi.cc
 
-    source/entities/gameObject.h
-    source/entities/character.h
-    source/entities/character.cc
-    source/entities/platform.h
-    source/entities/platform.cc
-    source/entities/hitbox.h
-    source/entities/hitbox.cc
+        source/entities/gameObject.h
+        source/entities/character.h
+        source/entities/character.cc
+        source/entities/platform.h
+        source/entities/platform.cc
+        source/entities/hitbox.h
+        source/entities/hitbox.cc
 
-    source/core/application.h
-    source/core/application.cc
-    source/core/entityManager.h
-    source/core/entityManager.cc
-    source/core/entry.cc
+        source/events/event.h
+
+        source/core/application.h
+        source/core/application.cc
+        source/core/entityManager.h
+        source/core/entityManager.cc
+        source/core/entry.cc
 )
 
 target_include_directories(Ink PUBLIC
-    vendor/glad/include
-    vendor/glfw/include
-    vendor/GLM
-    vendor 
-    source
+        vendor/glad/include
+        vendor/glfw/include
+        vendor/GLM
+        vendor
+        source
 )
 
 target_link_libraries(Ink glfw)
