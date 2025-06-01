@@ -11,8 +11,12 @@ public:
     PlatformType type;
     bool isDrawn;
 
-    Platform(PlatformType type, const glm::vec3 &pos, float massValue, const glm::vec2 &scale,
-             bool isDrawn);
+    Platform(PlatformType type,
+        std::shared_ptr<Texture> texture,
+        const glm::vec3 &startPos,
+        float massValue,
+        const glm::vec2 &scale,
+        bool isDrawn);
 
     void update(float dt) override;
     void draw() override;

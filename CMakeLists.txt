@@ -41,6 +41,8 @@ target_sources(Ink PUBLIC
     source/core/application.cc
     source/core/entityManager.h
     source/core/entityManager.cc
+    source/core/levelLoader.h
+    source/core/levelLoader.cc
     source/core/entry.cc
 )
 

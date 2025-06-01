@@ -9,12 +9,7 @@ class GameObject {
 public:
     GameObject(const glm::vec2 &s = glm::vec2(1.0f, 1.0f),
                const glm::vec3 &p = glm::vec3(0.0f, 0.0f, 0.0f))
-        : position(p), velocity(0.0f), scale(s), hitbox(s, p)  // build hit-box once, with real data
-    {
-        if (!s_textureManager) {
-            s_textureManager = TextureManager::instance();
-        }
-    }
+        : position(p), velocity(0.0f), scale(s), hitbox(s, p) {} // build hit-box once, with real data
 
     glm::vec3 position;
     glm::vec2 velocity;
@@ -41,11 +36,4 @@ public:
         return mass > 0.0f;
     }
     ~GameObject() = default;
-
-    static void initializeTextureManager(std::shared_ptr<TextureManager> mgr) {
-        s_textureManager = std::move(mgr);
-    }
-
-protected:
-    inline static std::shared_ptr<TextureManager> s_textureManager = nullptr;
 };

@@ -44,6 +44,8 @@ public:
                         const string &sheetName,
                         int frameIndex);
 
+    bool hasTexture(const string &textureName);
+
     /// Fetch everything needed to draw that frame (nullptr if missing)
     const SpriteInfo *getSpriteInfo(const string &spriteName) const;
 

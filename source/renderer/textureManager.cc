@@ -12,14 +12,29 @@ std::shared_ptr<TextureManager> TextureManager::instance() {
     return inst;
 }
 
-bool TextureManager::loadTexture(const string &name, const string &filePath) {
-    sheetMap[name] = { std::move(std::make_shared<Texture>(filePath)), 0, 0 };
+bool TextureManager::loadTexture(const std::string &name, const std::string &filePath) {
+    auto tex = std::make_shared<Texture>(filePath);
+    if (!tex || tex->m_rendererID == 0) {
+        std::cerr << "[TextureManager] Failed to load texture from " << filePath << "\n";
+        return false;
+    }
+
+    std::cout << "[TextureManager] Successfully loaded texture: " << name << " (ID " << tex->m_rendererID << ")\n";
+    sheetMap[name] = { tex, 0, 0 };
     return true;
 }
 
 shared_ptr<Texture> TextureManager::getTexture(const string &name) const {
     auto it = sheetMap.find(name);
-    return it != sheetMap.end() ? it->second.texture : 0;
+    if (it == sheetMap.end()) {
+        std::cerr << "[getTexture] Texture '" << name << "' not found in sheetMap!\n";
+        return nullptr;
+    }
+    return it != sheetMap.end() ? it->second.texture : nullptr;
+}
+
+bool TextureManager::hasTexture(const string &fileName) {
+    return sheetMap.find(fileName) != sheetMap.end();
 }
 
 bool TextureManager::loadSpriteSheet(const string &sheetName, const string &filePath, int sW, int sH) {

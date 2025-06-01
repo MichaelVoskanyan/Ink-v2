@@ -18,7 +18,11 @@ public:
     DrawMode drawMode = DrawMode::none;
 
     // Constructor: initialize position and speed, optional mass
-    Character(const glm::vec3 &startPos, float speedValue, float massValue, const glm::vec2 &scale);
+    Character(std::shared_ptr<Texture> texture,
+        const glm::vec3 &startPos,
+        float speedValue,
+        float massValue,
+        const glm::vec2 &scale);
 
     // Input handling
     void handleKeyInput();
