@@ -1,0 +1,35 @@
+{
+    "levelName": "Test World",
+    "objects": [
+      {
+        "type": "platform",
+        "subtype": "stationary",
+        "texture": "mossy_brick",
+        "position": [0.0, -1.0, 0.0],
+        "scale": [5.0, 0.2]
+      },
+      {
+        "type": "platform",
+        "subtype": "stationary",
+        "texture": "default_brick",
+        "position": [0.8, 0.0, 0.0],
+        "scale": [0.2, 0.5]
+      },
+      {
+        "type": "platform",
+        "subtype": "stationary",
+        "texture": "mossy_brick",
+        "position": [0.0, -0.5, 0.0],
+        "scale": [0.5, 0.2]
+      },
+      {
+        "type": "character",
+        "texture": "default_brick",
+        "position": [0.0, 1.0, 0.0],
+        "scale": [0.2, 0.2],
+        "speed": 2.5,
+        "mass": 0.2
+      }
+    ]
+  }
+  

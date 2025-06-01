@@ -2,6 +2,7 @@
 #include "application.h"
 #include "KHR/khrplatform.h"
 #include "entityManager.h"
+#include "levelLoader.h"
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
@@ -67,28 +68,27 @@ Application::Application() {
 
     entityManager = EntityManager::instance();
     textureManager = TextureManager::instance();
+    std::cout << "[App] textureManager = " << textureManager.get() << std::endl;
+    loadLevelFromFile("assets/levels/level1.json", textureManager, entityManager);
 
-    textureManager->loadTexture("mossy_brick", "assets/textures/mossy_brick.png");
-    textureManager->loadTexture("default_brick", "assets/textures/default_brick.png");
+    // // Finally, create the player (which will trigger shader loading)
+    // std::cout << "[application] Creating player character...\n";
+    // player = entityManager->add<Character>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
+    //                                        glm::vec2(0.2f, 0.2f));
+    // std::cout << "[application] Player created.\n";
 
-    // Finally, create the player (which will trigger shader loading)
-    std::cout << "[application] Creating player character...\n";
-    player = entityManager->add<Character>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
-                                           glm::vec2(0.2f, 0.2f));
-    std::cout << "[application] Player created.\n";
-
-    // Create a test platform
-    std::cout << "[application] Creating test platforms...\n";
-    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
-                                 glm::vec2(5.0f, 0.2f), true);
-    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
-                                 glm::vec2(0.2f, 0.5f),
-                                 true);  // adding a scale to make the platform wider
-    entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
-                                 glm::vec2(0.5f, 0.2f),
-                                 true);  // adding a scale to make the platform wider
-    // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
-    // up later
+    // // Create a test platform
+    // std::cout << "[application] Creating test platforms...\n";
+    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
+    //                              glm::vec2(5.0f, 0.2f), true);
+    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
+    //                              glm::vec2(0.2f, 0.5f),
+    //                              true);  // adding a scale to make the platform wider
+    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
+    //                              glm::vec2(0.5f, 0.2f),
+    //                              true);  // adding a scale to make the platform wider
+    // // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
+    // // up later
     std::cout << "[application] Platforms created.\n";
 }
 
