@@ -18,7 +18,7 @@ public:
     DrawMode drawMode = DrawMode::none;
 
     // Constructor: initialize position and speed, optional mass
-    Character(std::shared_ptr<Texture> texture,
+    Character(SharedPtr<Texture> texture,
         const glm::vec3 &startPos,
         float speedValue,
         float massValue,

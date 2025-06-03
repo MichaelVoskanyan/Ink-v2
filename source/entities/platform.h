@@ -12,7 +12,7 @@ public:
     bool isDrawn;
 
     Platform(PlatformType type,
-        std::shared_ptr<Texture> texture,
+        SharedPtr<Texture> texture,
         const glm::vec3 &startPos,
         float massValue,
         const glm::vec2 &scale,

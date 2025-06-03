@@ -7,13 +7,13 @@
 using namespace std;
 // include your image‐loader (stb_image.h) and GL headers
 
-std::shared_ptr<TextureManager> TextureManager::instance() {
-    static auto inst = std::make_shared<TextureManager>();
+SharedPtr<TextureManager> TextureManager::instance() {
+    static auto inst = makeShared<TextureManager>();
     return inst;
 }
 
 bool TextureManager::loadTexture(const std::string &name, const std::string &filePath) {
-    auto tex = std::make_shared<Texture>(filePath);
+    auto tex = makeShared<Texture>(filePath);
     if (!tex || tex->m_rendererID == 0) {
         std::cerr << "[TextureManager] Failed to load texture from " << filePath << "\n";
         return false;
@@ -24,7 +24,7 @@ bool TextureManager::loadTexture(const std::string &name, const std::string &fil
     return true;
 }
 
-shared_ptr<Texture> TextureManager::getTexture(const string &name) const {
+SharedPtr<Texture> TextureManager::getTexture(const string &name) const {
     auto it = sheetMap.find(name);
     if (it == sheetMap.end()) {
         std::cerr << "[getTexture] Texture '" << name << "' not found in sheetMap!\n";

@@ -1,0 +1,1700 @@
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3093
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 173
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3094
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2940
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 234
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2960
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 174
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 234
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2971
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2940
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 173
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 541
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3053
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 510
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 612
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 266
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3032
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3002
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 184
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 520
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3083
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 143
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2941
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 6993
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 235
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 806
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 317
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2981
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3328
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 542
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2941
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 173
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 541
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2982
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3022
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 173
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2971
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 542
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2930
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 143
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 541
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3063
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2961
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3053
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 174
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 551
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3053
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 561
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 173
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2960
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 541
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2930
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 531
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2920
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 530
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3062
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3389
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 204
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 571
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 255
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3083
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2900
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 520
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2849
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2879
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2971
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3512
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 205
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 633
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 266
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2838
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2950
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 143
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2899
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2889
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3257
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 551
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3481
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 613
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 276
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3798
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 184
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 541
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 205
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2778
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2787
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2747
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2757
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 174
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2767
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 163
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2991
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 143
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 520
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3522
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 174
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 644
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2828
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3604
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 184
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 644
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2798
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3563
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 184
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 643
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 255
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3073
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2787
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2818
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2767
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3624
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 623
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2828
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3573
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 633
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2798
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2777
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3593
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 204
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 613
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2869
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2797
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 520
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2838
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2807
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 154
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2746
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3022
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2807
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 224
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2838
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 234
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2859
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 154
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3543
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 623
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 286
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3246
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 214
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 582
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3492
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 205
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 633
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 286
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3430
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 184
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 552
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 245
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2848
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 154
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 214
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2828
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 194
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2818
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 521
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 183
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2828
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3103
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2766
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 173
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2787
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 204
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2787
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 205
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2828
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2788
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2818
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2930
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 174
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2797
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 164
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 500
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2858
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 154
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 510
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 235
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2859
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 183
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2808
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 153
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 501
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 174
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2849
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 225
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3410
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 174
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 511
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 183
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 2808
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 163
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 490
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 184
+
+Beginning tests...
+Creating BigCyka!
+Deleting BigCyka!!
+STD Unique time: 3645
+Creating BigCyka!
+Deleting BigCyka!!
+My Unique time: 194
+
+=== = === = === = === = === = ===
+Beginning Shared Tests
+Creating BigCyka!
+Deleting BigCyka!!
+STD Shared time: 613
+Creating BigCyka!
+Deleting BigCyka!!
+My Shared time: 215
+

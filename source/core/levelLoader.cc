@@ -4,14 +4,17 @@
 #include "renderer/textureManager.h"
 #include <nlohmann/json.hpp>
 #include <fstream>
-#include <iostream>
+// #include <iostream>
+#include <cstdio>
 
 using json = nlohmann::json;
 
-std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::shared_ptr<TextureManager> textureManager, EntityManager* entityManager) {
+SharedPtr<Character> loadLevelFromFile(const std::string &filename,
+                                             SharedPtr<TextureManager> textureManager,
+                                             EntityManager *entityManager) {
     std::ifstream inFile(filename);
     if (!inFile) {
-        std::cerr << "[levelLoader] Failed to open level file: " << filename << std::endl;
+        fprintf(stderr, "[LevelLoader] Failed to open level file: %s\n", filename.c_str());
         return nullptr;
     }
 
@@ -19,12 +22,12 @@ std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::s
     inFile >> levelJson;
 
 
-    std::shared_ptr<Character> playerCharacter = nullptr;
+    SharedPtr<Character> playerCharacter = nullptr;
 
-    for (const auto& obj : levelJson["objects"]) {
-        if (!obj.contains("type") || !obj.contains("texture") ||
-            !obj.contains("position") || !obj.contains("scale")) {
-            std::cerr << "[LevelLoader] Skipping invalid object: missing required fields\n";
+    for (const auto &obj: levelJson["objects"]) {
+        if (!obj.contains("type") || !obj.contains("texture") || !obj.contains("position") ||
+            !obj.contains("scale")) {
+            fprintf(stderr, "[LevelLoader] Skipping invalid object: missing required fields\n");
             continue;
         }
         std::cout << "Type: " << obj["type"] << ", Texture: " << obj["texture"] << std::endl;
@@ -36,36 +39,34 @@ std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::s
         // Load the texture if it's not already present
         if (!textureManager->hasTexture(texture)) {
             std::string fullPath = "assets/textures/" + texture + ".png";
-            std::cout << "[LevelLoader] Attempting to load texture: " << fullPath << std::endl;
-            std::cout << "[LevelLoader] textureManager ptr: " << textureManager.get() << std::endl;
+            printf("[LevelLoader] Attempting to load texture: %s", fullPath.c_str());
             textureManager->loadTexture(texture, fullPath);
-            std::cout << "[LevelLoader] textureManager ptr: " << textureManager.get() << std::endl;
         }
 
         if (!textureManager) {
-            std::cerr << "[LevelLoader] ERROR: textureManager is NULL\n";
-            abort(); // or return
+            fprintf(stderr, "[LevelLoader] ERROR: textureManager is NULL\n");
+            abort();  // or return
         }
 
         auto texPtr = textureManager->getTexture(texture);
-        std::cout << "[DEBUG] texPtr = " << texPtr.get()
-          << ", ID = " << (texPtr ? texPtr->m_rendererID : 0) << std::endl;
+//        std::cout << "[DEBUG] texPtr = " << texPtr.get()
+//                  << ", ID = " << (texPtr ? texPtr->m_rendererID : 0) << std::endl;
 
         if (type == "platform") {
             std::string subtype = obj.value("subtype", "stationary");
-            PlatformType pt = (subtype == "stationary") ? PlatformType::stationary : PlatformType::moving;
+            PlatformType pt =
+                    (subtype == "stationary") ? PlatformType::stationary : PlatformType::moving;
             entityManager->add<Platform>(pt, texPtr, position, 0.0f, scale, true);
-        }
-        else if (type == "character") {
+        } else if (type == "character") {
             float speed = obj.value("speed", 2.5f);
             float mass = obj.value("mass", 0.2f);
             playerCharacter = entityManager->add<Character>(texPtr, position, speed, mass, scale);
-        }
-        else {
-            std::cerr << "[levelLoader] Unknown object type: " << type << std::endl;
+        } else {
+            fprintf(stderr, "[LevelLoader] Unknown object type: %s\n", type.c_str());
         }
     }
 
-    std::cout << "[levelLoader] Level loaded: " << levelJson["levelName"] << std::endl;
+//    std::cout << "[levelLoader] Level loaded: " << levelJson["levelName"] << std::endl;
+    printf("[LevelLoader] Level Loaded.\n");
     return playerCharacter;
 }

@@ -17,7 +17,7 @@ public:
     Hitbox hitbox;
     float mass = 0.0f;  // 0 ⇒ static / not affected by gravity
 
-    std::shared_ptr<SceneObject> renderObject = nullptr;
+    SharedPtr<SceneObject> renderObject = nullptr;
 
     virtual void update(float dt) = 0;
     virtual void draw() = 0;

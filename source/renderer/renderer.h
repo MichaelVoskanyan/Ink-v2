@@ -5,10 +5,9 @@
 
 #include "scene_object.h"
 
-#include <memory>
+#include <stl/ink_memory.h>
 #include <vector>
 
-using std::shared_ptr;
 using std::vector;
 
 class Renderer {
@@ -17,7 +16,7 @@ class Renderer {
     Renderer() = default;
     ~Renderer() = default;
 
-    vector<shared_ptr<SceneObject>> m_renderQueue;
+    vector<SharedPtr<SceneObject>> m_renderQueue;
     glm::mat4 m_viewMat;
     glm::mat4 m_projMat;
 
@@ -34,7 +33,7 @@ public:
         m_projMat = projMat;
     }
 
-    void submit(const std::shared_ptr<SceneObject> &object) {
+    void submit(const SharedPtr<SceneObject> &object) {
         m_renderQueue.push_back(object);
     }
 

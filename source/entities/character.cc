@@ -2,9 +2,7 @@
 #include "renderer/buffers.h"
 #include "renderer/shader.h"
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
-#include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
+#include <cstdio>
 
 using std::make_shared;
 
@@ -25,7 +23,7 @@ static float s_verts[] = {-0.5f, -0.5f, 0.0f, /* skip 5 floats */ 0,
                           0,     1,     1,    0};
 static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
-Character::Character(std::shared_ptr<Texture> texture,
+Character::Character(SharedPtr<Texture> texture,
                      const glm::vec3 &startPos,
                      float speedValue,
                      float massValue,
@@ -37,15 +35,15 @@ Character::Character(std::shared_ptr<Texture> texture,
     velocity = glm::vec2(0.0f);
 
     if (!s_ready) {
-        renderObject = make_shared<SceneObject>();
-        renderObject->m_mesh = make_shared<Mesh>();
+        renderObject = makeShared<SceneObject>();
+        renderObject->m_mesh = makeShared<Mesh>();
         renderObject->m_mesh->m_texture = texture;
 
-        renderObject->m_mesh->m_vertexArray = make_shared<VertexArray>(
-            make_shared<VertexBuffer>(s_verts, sizeof(s_verts)),
-            make_shared<IndexBuffer>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
+        renderObject->m_mesh->m_vertexArray = makeShared<VertexArray>(
+            makeShared<VertexBuffer>(s_verts, sizeof(s_verts)),
+            makeShared<IndexBuffer>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
 
-        renderObject->m_mesh->m_shader = make_shared<Shader>("char.vs", "char.fs");
+        renderObject->m_mesh->m_shader = makeShared<Shader>("char.vs", "char.fs");
 
         s_ready = true;
     }
@@ -59,7 +57,7 @@ void Character::handleKeyInput() {
     if (glfwGetKey(win, GLFW_KEY_D) == GLFW_PRESS)
         dir.x += 1.0f;
     if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_PRESS && !m_isJumping) {
-        velocity.y += 0.1f;
+        velocity.y += 3.f;
         m_isJumping = true;
     }
     if (glfwGetKey(win, GLFW_KEY_SPACE) == GLFW_RELEASE && m_isJumping) {
@@ -78,10 +76,10 @@ void Character::handleMouseInput() {
 }
 
 void Character::resolveCollision(GameObject *other) {
-    std::cout << "[character] Checking collision with platform" << std::endl;
-    std::cout << "  Character pos: (" << position.x << ", " << position.y << ")" << std::endl;
-    std::cout << "  Character velocity: (" << velocity.x << ", " << velocity.y << ")" << std::endl;
-    std::cout << "[character] Platform has collision and character can move" << std::endl;
+    printf("[character] Checking collision with platform\n");
+    printf("  Character pos: (%f, %f)\n",  position.x, position.y);
+    printf("  Character velocity: (%f, %f)\n", velocity.x, velocity.y);
+    printf("[character] Platform has collision and character can move\n");
     // Move the character out of the other object
     glm::vec2 resolution = hitbox.getCollisionResolution(other->hitbox);
     position += glm::vec3(resolution, 0.0f);
@@ -90,14 +88,14 @@ void Character::resolveCollision(GameObject *other) {
     // Kill velocity in the direction of collision
     if (resolution.x != 0.0f) {
         velocity.x = 0.0f;  // Kill horizontal velocity if colliding horizontally
-        std::cout << "[character] Killed horizontal velocity" << std::endl;
+        printf("[character] Killed horizontal velocity\n");
     }
     if (resolution.y != 0.0f) {
         velocity.y = 0.0f;  // Kill vertical velocity if colliding vertically
         if (resolution.y > 0.0f) {
             m_isJumping = false;  // Reset jumping state when landing
         }
-        std::cout << "[character] Killed vertical velocity and reset jump" << std::endl;
+        printf("[character] Killed vertical velocity and reset jump\n");
     }
 }
 

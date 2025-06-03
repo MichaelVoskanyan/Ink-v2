@@ -21,6 +21,8 @@ add_executable(Ink)
 target_sources(Ink PUBLIC
     vendor/glad/src/glad.c
 
+    source/stl/ink_memory.h
+
     source/renderer/buffers.h
     source/renderer/buffers.cc
     source/renderer/shader.h

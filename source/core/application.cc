@@ -7,7 +7,7 @@
 #include <entities/character.h>
 #include <entities/platform.h>
 #include <glad/glad.h>
-#include <iostream>
+#include <cstdio>
 #include <renderer/buffers.h>
 #include <renderer/shader.h>
 #include <stdexcept>
@@ -19,7 +19,7 @@ Application *Application::s_instance = nullptr;
 Renderer *Renderer::s_instance = nullptr;
 
 void framebufferSizeCallback(GLFWwindow *window, int w, int h) {
-    std::cout << "[application] Resized to " << w << "x" << h << "\n";
+    printf("[Application] Resized to %d, %d\n", w, h);
     glViewport(0, 0, w, h);
 }
 
@@ -31,7 +31,7 @@ Application *Application::getInstance() {
 }
 
 Application::Application() {
-    std::cout << "[application] Initializing GLFW...\n";
+    printf("[Application] Initializing GLFW...\n");
     if (!glfwInit())
         throw std::runtime_error("Failed to initialize GLFW");
 
@@ -43,57 +43,39 @@ Application::Application() {
 #endif
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    std::cout << "[application] Creating GLFW window...\n";
+    printf("[Application] Creating GLFW window...\n");
     window = glfwCreateWindow(width, height, title, nullptr, nullptr);
     if (!window)
         throw std::runtime_error("Failed to create GLFW window");
 
     glfwMakeContextCurrent(window);
 
-    std::cout << "[application] Loading GLAD...\n";
+    printf("[Application] Loading GLAD...\n");
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
         throw std::runtime_error("Failed to initialize GLAD");
 
     // **Make sure viewport is set once at startup**
-    std::cout << "[application] Setting initial viewport to " << width << "x" << height << "\n";
     int fbwidth, fbheight;
     glfwGetFramebufferSize(window, &fbwidth, &fbheight);
+    printf("[Application] Setting initial viewport to %d, %d", fbwidth, fbheight);
     glViewport(0, 0, fbwidth, fbheight);
 
     // Now we can install the resize callback
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
     glClearColor(0.589f, 0.443f, 0.09f, 1.f);
-    std::cout << "[application] Clear color set.\n";
+    printf("[Application] Clear color set.\n");
 
     entityManager = EntityManager::instance();
     textureManager = TextureManager::instance();
-    std::cout << "[App] textureManager = " << textureManager.get() << std::endl;
+    printf("[Application] TextureManager set.\n");
     player = loadLevelFromFile("assets/levels/level1.json", textureManager, entityManager);
 
-    // // Finally, create the player (which will trigger shader loading)
-    // std::cout << "[application] Creating player character...\n";
-    // player = entityManager->add<Character>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
-    //                                        glm::vec2(0.2f, 0.2f));
-    // std::cout << "[application] Player created.\n";
-
-    // // Create a test platform
-    // std::cout << "[application] Creating test platforms...\n";
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
-    //                              glm::vec2(5.0f, 0.2f), true);
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
-    //                              glm::vec2(0.2f, 0.5f),
-    //                              true);  // adding a scale to make the platform wider
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
-    //                              glm::vec2(0.5f, 0.2f),
-    //                              true);  // adding a scale to make the platform wider
-    // // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
-    // // up later
-    std::cout << "[application] Platforms created.\n";
+    printf("[Application] Platforms created.\n");
 }
 
 Application::~Application() {
-    std::cout << "[application] Terminating GLFW...\n";
+    printf("[Application] Terminating GLFW...\n");
     glfwDestroyWindow(window);
     glfwTerminate();
 }

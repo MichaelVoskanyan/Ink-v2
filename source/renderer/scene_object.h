@@ -6,21 +6,20 @@
 #include "texture.h"
 #include "core/transform.h"
 
-#include <memory>
+#include <stl/ink_memory.h>
 #include <vector>
 
-using std::shared_ptr;
 using std::vector;
 
 
 struct Mesh {
-    shared_ptr<VertexArray> m_vertexArray;
-    shared_ptr<Shader> m_shader;
-    shared_ptr<Texture> m_texture;
+    SharedPtr<VertexArray> m_vertexArray;
+    SharedPtr<Shader> m_shader;
+    SharedPtr<Texture> m_texture;
 };
 
 struct SceneObject {
-    shared_ptr<Mesh> m_mesh;
+    SharedPtr<Mesh> m_mesh;
     Transform m_transform;
 };
 

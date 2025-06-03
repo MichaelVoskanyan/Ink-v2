@@ -2,7 +2,7 @@
 
 #include <string>
 #include <unordered_map>
-#include <memory>
+#include <stl/ink_memory.h>
 #include <cstdint>
 #include "texture.h"
 
@@ -10,7 +10,7 @@ using namespace std;
 
 /// Holds everything you need to draw one frame
 struct SpriteInfo {
-    shared_ptr<Texture> texture;   // pointer to the loaded texture
+    SharedPtr<Texture> texture;   // pointer to the loaded texture
     int spriteWidth;               // width of a single frame
     int spriteHeight;              // height of a single frame
     int frameIndex;                // index of the frame within the sheet
@@ -19,13 +19,13 @@ struct SpriteInfo {
 class TextureManager {
 public:
     /// Get the singleton instance
-    static shared_ptr<TextureManager> instance();
+    static SharedPtr<TextureManager> instance();
 
     /// Load a plain texture under 'name'
     bool loadTexture(const string &name, const string &filePath);
 
     /// Retrieve the Texture pointer you previously loaded (or nullptr)
-    shared_ptr<Texture> getTexture(const string &name) const;
+    SharedPtr<Texture> getTexture(const string &name) const;
 
     /**
      * Load a sprite sheet under 'sheetName'
@@ -60,7 +60,7 @@ public:
 
 private:
     struct Sheet {
-        shared_ptr<Texture> texture; // wrapper holds width/height
+        SharedPtr<Texture> texture; // wrapper holds width/height
         int spriteWidth;
         int spriteHeight;
     };

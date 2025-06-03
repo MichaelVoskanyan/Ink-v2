@@ -13,8 +13,11 @@ Hitbox::Hitbox(const glm::vec2 &size, const glm::vec3 &startPos) : size(size), p
 
 void Hitbox::updatePosition(const glm::vec3 &entityPos) {
     position = entityPos;
+
+#ifdef INK_DEBUG
     std::cout << "[hitbox] Position updated to: (" << position.x << ", " << position.y << ")"
               << std::endl;
+#endif
 }
 
 bool Hitbox::intersects(const Hitbox &other) const {
@@ -35,13 +38,14 @@ bool Hitbox::intersects(const Hitbox &other) const {
     const bool isIntersecting =
             !(left1 > right2 || right1 < left2 || top1 < bottom2 || bottom1 > top2);
 
+#ifdef INK_DEBUG
     std::cout << "[hitbox] Collision check:" << std::endl;
     std::cout << "  Box 1: pos=(" << position.x << "," << position.y << ") size=(" << size.x << ","
               << size.y << ")" << std::endl;
     std::cout << "  Box 2: pos=(" << other.position.x << "," << other.position.y << ") size=("
               << other.size.x << "," << other.size.y << ")" << std::endl;
     std::cout << "  Intersecting: " << (isIntersecting ? "YES" : "NO") << std::endl;
-
+#endif
     return isIntersecting;
 }
 
@@ -79,7 +83,9 @@ glm::vec2 Hitbox::getCollisionResolution(const Hitbox &other) const {
         resolution = glm::vec2(0.0f, -overlapBottom);
     }
 
+#ifdef INK_DEBUG
     std::cout << "[hitbox] Resolution vector: (" << resolution.x << ", " << resolution.y << ")"
               << std::endl;
+#endif
     return resolution;
 }

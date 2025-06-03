@@ -1,6 +1,7 @@
 #include "platform.h"
 #include "renderer/buffers.h"
 #include "renderer/shader.h"
+#include <stl/ink_memory.h>
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
@@ -12,7 +13,7 @@
 static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
 Platform::Platform(PlatformType type,
-                   std::shared_ptr<Texture> texture,
+                   SharedPtr<Texture> texture,
                    const glm::vec3 &startPos,
                    float massValue,
                    const glm::vec2 &scale,
@@ -28,8 +29,8 @@ Platform::Platform(PlatformType type,
     std::cout << "  Scale: (" << scale.x << ", " << scale.y << ")\n";
     std::cout << "  Mass: " << mass << "\n";
 
-    renderObject = std::make_shared<SceneObject>();
-    renderObject->m_mesh = std::make_shared<Mesh>();
+    renderObject = makeShared<SceneObject>();
+    renderObject->m_mesh = makeShared<Mesh>();
     assert(texture && "Texture pointer is null!");
     assert(renderObject && "renderObject is null!");
     assert(renderObject->m_mesh && "renderObject->m_mesh is null!");
@@ -46,10 +47,10 @@ Platform::Platform(PlatformType type,
 
     static unsigned int s_idx[] = {0, 1, 2, 0, 2, 3};
 
-    renderObject->m_mesh->m_vertexArray = std::make_shared<VertexArray>(
-        std::make_shared<VertexBuffer>(verts, sizeof(verts)),
-        std::make_shared<IndexBuffer>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
-    renderObject->m_mesh->m_shader = std::make_shared<Shader>("platform.vs", "platform.fs");
+    renderObject->m_mesh->m_vertexArray = makeShared<VertexArray>(
+        makeShared<VertexBuffer>(verts, sizeof(verts)),
+        makeShared<IndexBuffer>(s_idx, sizeof(s_idx) / sizeof(s_idx[0])));
+    renderObject->m_mesh->m_shader = makeShared<Shader>("platform.vs", "platform.fs");
 
     renderObject->m_transform.m_position = position;
     renderObject->m_transform.m_scale = glm::vec3(scale, 1.0f);

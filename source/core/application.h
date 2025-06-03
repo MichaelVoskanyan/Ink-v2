@@ -43,10 +43,10 @@ private:
     static Application *s_instance;
 
     // The main player character
-    std::shared_ptr<Character> player = nullptr;
+    SharedPtr<Character> player = nullptr;
 
     EntityManager *entityManager = nullptr;
-    std::shared_ptr<TextureManager> textureManager = nullptr;
+    SharedPtr<TextureManager> textureManager = nullptr;
 };
 
 #endif  // INK_APPLICATION_H

@@ -42,7 +42,7 @@ void VertexBuffer::unbind() const {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-VertexArray::VertexArray(const shared_ptr<VertexBuffer> &vb, const shared_ptr<IndexBuffer> &ib)
+VertexArray::VertexArray(const SharedPtr<VertexBuffer> &vb, const SharedPtr<IndexBuffer> &ib)
     : m_rendererID(0), m_vertexBuffer(vb), m_indexBuffer(ib) {
     glGenVertexArrays(1, &m_rendererID);
     glBindVertexArray(m_rendererID);
