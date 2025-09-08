@@ -73,7 +73,7 @@
     },
     {
       "type": "character",
-      "texture": "default_brick",
+      "texture": "mossy_brick",
       "position": [
         0.0,
         1.0,

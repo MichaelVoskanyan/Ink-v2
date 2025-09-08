@@ -5,6 +5,8 @@
 #include "entities/character.h"
 #include "renderer/textureManager.h"
 #include "entityManager.h"
+// M0 validation overlay
+#include "entities/canvasOverlay.h"
 
 /// Load a level from the specified JSON file.
 /// Returns a pointer to the player Character if one is found, or nullptr otherwise.

@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <entities/character.h>
 #include <entities/platform.h>
+#include <entities/canvasOverlay.h>
 #include <glad/glad.h>
 #include <iostream>
 #include <renderer/buffers.h>
@@ -14,6 +15,7 @@
 #include <thread>
 #include <atomic>
 #include <condition_variable>
+#include "strokeRecorder.h"
 
 Application *Application::s_instance = nullptr;
 Renderer *Renderer::s_instance = nullptr;
@@ -71,24 +73,6 @@ Application::Application() {
     std::cout << "[App] textureManager = " << textureManager.get() << std::endl;
     player = loadLevelFromFile("assets/levels/level1.json", textureManager, entityManager);
 
-    // // Finally, create the player (which will trigger shader loading)
-    // std::cout << "[application] Creating player character...\n";
-    // player = entityManager->add<Character>(glm::vec3(0.0f, 1.0f, 0.0f), 2.5f, 0.2f,
-    //                                        glm::vec2(0.2f, 0.2f));
-    // std::cout << "[application] Player created.\n";
-
-    // // Create a test platform
-    // std::cout << "[application] Creating test platforms...\n";
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -1.0f, 0.0f), 0.0f,
-    //                              glm::vec2(5.0f, 0.2f), true);
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.8f, 0.0f, 0.0f), 0.0f,
-    //                              glm::vec2(0.2f, 0.5f),
-    //                              true);  // adding a scale to make the platform wider
-    // entityManager->add<Platform>(PlatformType::stationary, glm::vec3(0.0f, -0.5f, 0.0f), 0.0f,
-    //                              glm::vec2(0.5f, 0.2f),
-    //                              true);  // adding a scale to make the platform wider
-    // // platform->setHitboxSize(glm::vec2(5.0f, 0.5f)); will set hitboxes
-    // // up later
     std::cout << "[application] Platforms created.\n";
 }
 
@@ -149,6 +133,16 @@ void Application::run() {
     while (!glfwWindowShouldClose(window)) {
         player->handleKeyInput();
         player->handleMouseInput();
+        // M1: capture stroke points between LMB down/up
+        StrokeRecorder::instance()->poll();
+        // Debug: log completed strokes count and size
+        while (StrokeRecorder::instance()->hasCompletedStroke()) {
+            auto s = StrokeRecorder::instance()->popCompletedStroke();
+            if (s && !s->points.empty()) {
+                std::cout << "[stroke] completed with " << s->points.size() << " points"
+                          << std::endl;
+            }
+        }
 
         // 1. measure real elapsed time
         {
@@ -177,6 +171,14 @@ void Application::run() {
 
         renderer->beginScene(view, projection);
         for (const auto &entity: entityManager->getEntities()) {
+            // If this is our debug canvas overlay, anchor to screen and upload pixels on render
+            // thread
+            if (auto overlay = std::dynamic_pointer_cast<CanvasOverlay>(entity)) {
+                // Place overlay slightly in front of camera (negative Z in view space)
+                glm::vec3 screenAnchor(-1.7f, 1.0f, -1.0f);  // top-left-ish in our ortho view
+                overlay->uploadToGpu();
+            }
+
             if (entity->renderObject == nullptr)
                 continue;  // skip entities without render objects.
             renderer->submit(entity->renderObject);

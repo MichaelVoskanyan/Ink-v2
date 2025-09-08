@@ -4,7 +4,6 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
 
 using std::make_shared;
 
@@ -78,10 +77,6 @@ void Character::handleMouseInput() {
 }
 
 void Character::resolveCollision(GameObject *other) {
-    std::cout << "[character] Checking collision with platform" << std::endl;
-    std::cout << "  Character pos: (" << position.x << ", " << position.y << ")" << std::endl;
-    std::cout << "  Character velocity: (" << velocity.x << ", " << velocity.y << ")" << std::endl;
-    std::cout << "[character] Platform has collision and character can move" << std::endl;
     // Move the character out of the other object
     glm::vec2 resolution = hitbox.getCollisionResolution(other->hitbox);
     position += glm::vec3(resolution, 0.0f);
@@ -90,14 +85,12 @@ void Character::resolveCollision(GameObject *other) {
     // Kill velocity in the direction of collision
     if (resolution.x != 0.0f) {
         velocity.x = 0.0f;  // Kill horizontal velocity if colliding horizontally
-        std::cout << "[character] Killed horizontal velocity" << std::endl;
     }
     if (resolution.y != 0.0f) {
         velocity.y = 0.0f;  // Kill vertical velocity if colliding vertically
         if (resolution.y > 0.0f) {
             m_isJumping = false;  // Reset jumping state when landing
         }
-        std::cout << "[character] Killed vertical velocity and reset jump" << std::endl;
     }
 }
 

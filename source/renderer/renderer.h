@@ -58,6 +58,7 @@ public:
 
             obj->m_mesh->m_shader->setVec3("u_position", obj->m_transform.m_position);
             obj->m_mesh->m_shader->setVec3("u_scale", obj->m_transform.m_scale);
+            obj->m_mesh->m_shader->setInt("u_screenSpace", obj->m_screenSpace ? 1 : 0);
 
             glDrawElements(GL_TRIANGLES, obj->m_mesh->m_vertexArray->getIndexCount(),
                            GL_UNSIGNED_INT, nullptr);

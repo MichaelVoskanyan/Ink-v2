@@ -8,7 +8,9 @@
 
 using json = nlohmann::json;
 
-std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::shared_ptr<TextureManager> textureManager, EntityManager* entityManager) {
+std::shared_ptr<Character> loadLevelFromFile(const std::string &filename,
+                                             std::shared_ptr<TextureManager> textureManager,
+                                             EntityManager *entityManager) {
     std::ifstream inFile(filename);
     if (!inFile) {
         std::cerr << "[levelLoader] Failed to open level file: " << filename << std::endl;
@@ -21,9 +23,9 @@ std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::s
 
     std::shared_ptr<Character> playerCharacter = nullptr;
 
-    for (const auto& obj : levelJson["objects"]) {
-        if (!obj.contains("type") || !obj.contains("texture") ||
-            !obj.contains("position") || !obj.contains("scale")) {
+    for (const auto &obj: levelJson["objects"]) {
+        if (!obj.contains("type") || !obj.contains("texture") || !obj.contains("position") ||
+            !obj.contains("scale")) {
             std::cerr << "[LevelLoader] Skipping invalid object: missing required fields\n";
             continue;
         }
@@ -44,28 +46,28 @@ std::shared_ptr<Character> loadLevelFromFile(const std::string &filename, std::s
 
         if (!textureManager) {
             std::cerr << "[LevelLoader] ERROR: textureManager is NULL\n";
-            abort(); // or return
+            abort();  // or return
         }
 
         auto texPtr = textureManager->getTexture(texture);
         std::cout << "[DEBUG] texPtr = " << texPtr.get()
-          << ", ID = " << (texPtr ? texPtr->m_rendererID : 0) << std::endl;
+                  << ", ID = " << (texPtr ? texPtr->m_rendererID : 0) << std::endl;
 
         if (type == "platform") {
             std::string subtype = obj.value("subtype", "stationary");
-            PlatformType pt = (subtype == "stationary") ? PlatformType::stationary : PlatformType::moving;
+            PlatformType pt =
+                    (subtype == "stationary") ? PlatformType::stationary : PlatformType::moving;
             entityManager->add<Platform>(pt, texPtr, position, 0.0f, scale, true);
-        }
-        else if (type == "character") {
+        } else if (type == "character") {
             float speed = obj.value("speed", 2.5f);
             float mass = obj.value("mass", 0.2f);
             playerCharacter = entityManager->add<Character>(texPtr, position, speed, mass, scale);
-        }
-        else {
+        } else {
             std::cerr << "[levelLoader] Unknown object type: " << type << std::endl;
         }
     }
 
+    entityManager->add<CanvasOverlay>();
     std::cout << "[levelLoader] Level loaded: " << levelJson["levelName"] << std::endl;
     return playerCharacter;
 }

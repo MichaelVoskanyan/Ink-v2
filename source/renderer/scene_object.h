@@ -22,6 +22,7 @@ struct Mesh {
 struct SceneObject {
     shared_ptr<Mesh> m_mesh;
     Transform m_transform;
+    bool m_screenSpace = false; // true to render in NDC/screen space
 };
 
 
