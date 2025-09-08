@@ -47,6 +47,8 @@ target_sources(Ink PUBLIC
     source/core/levelLoader.cc
     source/core/strokeRecorder.h
     source/core/strokeRecorder.cc
+    source/core/recognizer.h
+    source/core/recognizer.cc
     source/core/entry.cc
 )
 

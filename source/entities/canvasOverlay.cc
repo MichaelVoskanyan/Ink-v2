@@ -3,6 +3,7 @@
 #include "renderer/buffers.h"
 #include "renderer/shader.h"
 #include "core/strokeRecorder.h"
+#include "core/drawing.h"
 
 #include <cassert>
 #include <memory>
@@ -57,50 +58,19 @@ void CanvasOverlay::clearCanvas(unsigned char value, unsigned char a) {
 }
 
 void CanvasOverlay::setPixel(int x, int y, unsigned char v, unsigned char a) {
-    if (x < 0 || x >= kW || y < 0 || y >= kH)
-        return;
-    size_t i = static_cast<size_t>((y * kW + x) * 4);
-    m_pixels[i + 0] = v;
-    m_pixels[i + 1] = v;
-    m_pixels[i + 2] = v;
-    m_pixels[i + 3] = a;
+    Raster::ImageRgba img{m_pixels.data(), kW, kH};
+    Raster::plot(img, x, y, v, a);
 }
 
 void CanvasOverlay::drawDisc(int cx, int cy, int radius, unsigned char v, unsigned char a) {
-    int r2 = radius * radius;
-    for (int dy = -radius; dy <= radius; ++dy) {
-        for (int dx = -radius; dx <= radius; ++dx) {
-            if (dx * dx + dy * dy <= r2) {
-                setPixel(cx + dx, cy + dy, v, a);
-            }
-        }
-    }
+    Raster::ImageRgba img{m_pixels.data(), kW, kH};
+    Raster::drawDisc(img, cx, cy, radius, v, a);
 }
 
 void CanvasOverlay::drawLine(int x0, int y0, int x1, int y1, int radius, unsigned char v,
                              unsigned char a) {
-    int dx = std::abs(x1 - x0);
-    int sx = x0 < x1 ? 1 : -1;
-    int dy = -std::abs(y1 - y0);
-    int sy = y0 < y1 ? 1 : -1;
-    int err = dx + dy;
-    while (true) {
-        if (radius > 0)
-            drawDisc(x0, y0, radius, v, a);
-        else
-            setPixel(x0, y0, v, a);
-        if (x0 == x1 && y0 == y1)
-            break;
-        int e2 = 2 * err;
-        if (e2 >= dy) {
-            err += dy;
-            x0 += sx;
-        }
-        if (e2 <= dx) {
-            err += dx;
-            y0 += sy;
-        }
-    }
+    Raster::ImageRgba img{m_pixels.data(), kW, kH};
+    Raster::drawLine(img, x0, y0, x1, y1, radius, v, a);
 }
 
 std::pair<int, int> CanvasOverlay::toCanvas(float nx, float ny) const {
@@ -110,6 +80,7 @@ std::pair<int, int> CanvasOverlay::toCanvas(float nx, float ny) const {
     nx = std::max(0.0f, std::min(1.0f, nx));
     ny = std::max(0.0f, std::min(1.0f, ny));
     int x = static_cast<int>(nx * (kW - 1) + 0.5f);
+    // why only y needs to be flipped?
     int y = static_cast<int>((1.0f - ny) * (kH - 1) + 0.5f);
     return {x, y};
 }
@@ -159,15 +130,8 @@ void CanvasOverlay::update(float dt) {
     {
         std::lock_guard<std::mutex> lk(m_pixelsMutex);
         // Clear to dark background for contrast
-        for (int y = 0; y < kH; ++y) {
-            for (int x = 0; x < kW; ++x) {
-                size_t i = static_cast<size_t>((y * kW + x) * 4);
-                m_pixels[i + 0] = 16;  // dark gray background
-                m_pixels[i + 1] = 16;
-                m_pixels[i + 2] = 16;
-                m_pixels[i + 3] = 255;
-            }
-        }
+        Raster::ImageRgba img{m_pixels.data(), kW, kH};
+        Raster::clear(img, 16, 255);
 
         // Draw stroke if there are points
         const int radius = 1;  // ~2-3px thickness

@@ -16,6 +16,7 @@
 #include <atomic>
 #include <condition_variable>
 #include "strokeRecorder.h"
+#include "recognizer.h"
 
 Application *Application::s_instance = nullptr;
 Renderer *Renderer::s_instance = nullptr;
@@ -139,8 +140,13 @@ void Application::run() {
         while (StrokeRecorder::instance()->hasCompletedStroke()) {
             auto s = StrokeRecorder::instance()->popCompletedStroke();
             if (s && !s->points.empty()) {
-                std::cout << "[stroke] completed with " << s->points.size() << " points"
-                          << std::endl;
+                std::cout << "[stroke] completed with " << s->points.size() << " points" << std::endl;
+                // Submit to recognizer; log prediction only when one has been made
+                Recognizer::instance()->submitStroke(s->points);
+                if (auto pred = Recognizer::instance()->popNewPrediction()) {
+                    std::cout << "[recognizer] label=" << pred->label
+                              << ", conf=" << pred->confidence << std::endl;
+                }
             }
         }
 
