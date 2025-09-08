@@ -24,6 +24,37 @@ bool TextureManager::loadTexture(const std::string &name, const std::string &fil
     return true;
 }
 
+// Create a GL texture intended for frequent CPU-side updates (RGBA8). Stores it
+// under `name` so other systems can fetch it by key and render it.
+bool TextureManager::createDynamicTexture(const std::string &name,
+                                          int width,
+                                          int height,
+                                          const unsigned char *rgba) {
+    auto tex = std::make_shared<Texture>(width, height, rgba, /*generateMipmaps*/ false);
+    if (!tex || tex->m_rendererID == 0) {
+        std::cerr << "[TextureManager] Failed to create dynamic texture: " << name << "\n";
+        return false;
+    }
+    sheetMap[name] = { tex, 0, 0 };
+    std::cout << "[TextureManager] Created dynamic texture: " << name << " (" << width << "x" << height
+              << ", ID " << tex->m_rendererID << ")\n";
+    return true;
+}
+
+// Replace the full contents of an existing dynamic texture with new RGBA pixels.
+// Optionally regenerates mipmaps when `regenerateMipmaps` is true.
+bool TextureManager::updateDynamicTexture(const std::string &name,
+                                          const unsigned char *rgba,
+                                          bool regenerateMipmaps) {
+    auto it = sheetMap.find(name);
+    if (it == sheetMap.end() || !it->second.texture) {
+        std::cerr << "[TextureManager] updateDynamicTexture: missing texture '" << name << "'\n";
+        return false;
+    }
+    it->second.texture->update(rgba, regenerateMipmaps);
+    return true;
+}
+
 shared_ptr<Texture> TextureManager::getTexture(const string &name) const {
     auto it = sheetMap.find(name);
     if (it == sheetMap.end()) {

@@ -34,6 +34,8 @@ target_sources(Ink PUBLIC
     source/entities/character.cc
     source/entities/platform.h
     source/entities/platform.cc
+    source/entities/canvasOverlay.h
+    source/entities/canvasOverlay.cc
     source/entities/hitbox.h
     source/entities/hitbox.cc
 
@@ -43,6 +45,8 @@ target_sources(Ink PUBLIC
     source/core/entityManager.cc
     source/core/levelLoader.h
     source/core/levelLoader.cc
+    source/core/strokeRecorder.h
+    source/core/strokeRecorder.cc
     source/core/entry.cc
 )
 

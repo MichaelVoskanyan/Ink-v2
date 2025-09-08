@@ -24,6 +24,17 @@ public:
     /// Load a plain texture under 'name'
     bool loadTexture(const string &name, const string &filePath);
 
+    /// Create a CPU-updatable RGBA texture under 'name'
+    bool createDynamicTexture(const std::string &name,
+                              int width,
+                              int height,
+                              const unsigned char *rgba = nullptr);
+
+    /// Update an existing dynamic texture by name
+    bool updateDynamicTexture(const std::string &name,
+                              const unsigned char *rgba,
+                              bool regenerateMipmaps = false);
+
     /// Retrieve the Texture pointer you previously loaded (or nullptr)
     shared_ptr<Texture> getTexture(const string &name) const;
 

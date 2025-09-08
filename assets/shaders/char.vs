@@ -14,6 +14,7 @@ uniform mat4 u_projMat;
 uniform vec3 u_position;
 uniform vec3 u_scale;
 uniform vec4 u_rotation;
+uniform int  u_screenSpace; // 0 = world space, 1 = screen space (NDC)
 
 // Build scale matrix
 mat4 scaleMatrix(vec3 s) {
@@ -68,5 +69,10 @@ void main() {
     TexCoords = a_uv;
 
     // Final clip-space position
-    gl_Position = u_projMat * u_viewMat * worldPos;
+    if (u_screenSpace == 1) {
+        // Interpret u_position/u_scale in NDC so it stays fixed on screen
+        gl_Position = vec4(worldPos.xy, 0.0, 1.0);
+    } else {
+        gl_Position = u_projMat * u_viewMat * worldPos;
+    }
 }
