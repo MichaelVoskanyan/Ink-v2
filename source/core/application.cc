@@ -115,7 +115,7 @@ Application::Application() {
     entityManager = EntityManager::instance();
     textureManager = TextureManager::instance();
     std::cout << "[App] textureManager = " << textureManager.get() << std::endl;
-    player = loadLevelFromFile("assets/levels/level1.json", textureManager, entityManager);
+    player = loadLevelFromFile("assets/levels/test2.json", textureManager, entityManager);
 
     std::cout << "[application] Platforms created.\n";
 }
@@ -227,10 +227,10 @@ void Application::run() {
         glm::mat4 view = glm::translate(glm::mat4(1.0f), -(playerPos + cameraOffset));
 
         // Projection: basic perspective or orthographic
-        glm::mat4 projection = glm::ortho(-2.0f, 2.0f,  // left, right
-                                          -1.5f, 1.5f,  // bottom, top
-                                          0.1f, 100.0f  // near, far
-        );
+        constexpr float kViewScale = 2.0f;  // increase to zoom out
+        glm::mat4 projection = glm::ortho(-2.0f * kViewScale, 2.0f * kViewScale,
+                                          -1.5f * kViewScale, 1.5f * kViewScale,
+                                          0.1f, 100.0f);
 
         // You can also use glm::perspective for 3D view, e.g.:
         // glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)width/height, 0.1f,
