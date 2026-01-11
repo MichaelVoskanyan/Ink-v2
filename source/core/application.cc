@@ -14,12 +14,55 @@
 #include <stdexcept>
 #include <thread>
 #include <atomic>
+#include <algorithm>
 #include <condition_variable>
 #include "strokeRecorder.h"
 #include "recognizer.h"
 
 Application *Application::s_instance = nullptr;
 Renderer *Renderer::s_instance = nullptr;
+
+namespace {
+struct StrokeBounds {
+    glm::vec2 min;
+    glm::vec2 max;
+};
+
+StrokeBounds boundsFromPoints(const std::vector<glm::vec2>& points) {
+    StrokeBounds bounds{points.front(), points.front()};
+    for (const auto& p : points) {
+        bounds.min.x = std::min(bounds.min.x, p.x);
+        bounds.min.y = std::min(bounds.min.y, p.y);
+        bounds.max.x = std::max(bounds.max.x, p.x);
+        bounds.max.y = std::max(bounds.max.y, p.y);
+    }
+    return bounds;
+}
+
+glm::vec2 normalizedToView(const glm::vec2& n) {
+    constexpr float kLeft = -2.0f;
+    constexpr float kRight = 2.0f;
+    constexpr float kBottom = -1.5f;
+    constexpr float kTop = 1.5f;
+    const float x = kLeft + n.x * (kRight - kLeft);
+    const float y = kTop - n.y * (kTop - kBottom);
+    return {x, y};
+}
+
+StrokeBounds expandBoundsForMinSize(const std::vector<glm::vec2>& points, float minSize) {
+    StrokeBounds bounds = boundsFromPoints(points);
+    const glm::vec2 center = (bounds.min + bounds.max) * 0.5f;
+    const float w = std::max(bounds.max.x - bounds.min.x, minSize);
+    const float h = std::max(bounds.max.y - bounds.min.y, minSize);
+
+    bounds.min = center - glm::vec2(w * 0.5f, h * 0.5f);
+    bounds.max = center + glm::vec2(w * 0.5f, h * 0.5f);
+
+    bounds.min = glm::clamp(bounds.min, glm::vec2(0.0f), glm::vec2(1.0f));
+    bounds.max = glm::clamp(bounds.max, glm::vec2(0.0f), glm::vec2(1.0f));
+    return bounds;
+}
+}  // namespace
 
 void framebufferSizeCallback(GLFWwindow *window, int w, int h) {
     std::cout << "[application] Resized to " << w << "x" << h << "\n";
@@ -146,6 +189,24 @@ void Application::run() {
                 if (auto pred = Recognizer::instance()->popNewPrediction()) {
                     std::cout << "[recognizer] label=" << pred->label
                               << ", conf=" << pred->confidence << std::endl;
+                }
+                {
+                    const std::string textureName = "mossy_brick";
+                    if (!textureManager->hasTexture(textureName)) {
+                        textureManager->loadTexture(textureName, "assets/textures/" + textureName + ".png");
+                    }
+                    auto texPtr = textureManager->getTexture(textureName);
+                    if (texPtr) {
+                        constexpr float kMinStrokeSize = 0.03f;
+                        const auto bounds = expandBoundsForMinSize(s->points, kMinStrokeSize);
+                        const glm::vec2 vmin = normalizedToView(bounds.min);
+                        const glm::vec2 vmax = normalizedToView(bounds.max);
+                        const glm::vec2 size = glm::abs(vmax - vmin);
+                        const glm::vec2 centerView = (vmin + vmax) * 0.5f;
+                        const glm::vec2 centerWorld = centerView + glm::vec2(player->position.x, player->position.y);
+                        entityManager->add<Platform>(PlatformType::stationary, texPtr,
+                            glm::vec3(centerWorld, 0.0f), 0.0f, size, true);
+                    }
                 }
             }
         }
